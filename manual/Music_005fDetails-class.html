@@ -1,0 +1,94 @@
+<html lang="en">
+<head>
+<title>Music_Details class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Music-Regular-Expressions.html#Music-Regular-Expressions" title="Music Regular Expressions">
+<link rel="prev" href="Expression-Language.html#Expression-Language" title="Expression Language">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Music_005fDetails-class"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Expression-Language.html#Expression-Language">Expression Language</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Music-Regular-Expressions.html#Music-Regular-Expressions">Music Regular Expressions</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">7.2.2 Music Details class</h4>
+
+<p><a name="index-music_005fdetails-259"></a>
+The music_details class allows the specification of music via a regular
+expression to the music class. Although functions are provided to return the
+score, they are mainly intended for use by the music class itself. It should
+be noted that the music class takes a copy of the music_details object rather
+than a pointer.
+
+<div class="defun">
+&mdash; Constructor:  <b>music_details</b> (<var>const string &amp;e = "", const int &amp;s = 1</var>)<var>;<a name="index-music_005fdetails-260"></a></var><br>
+&mdash; Constructor:  <b>music_details</b> (<var>const char *e, const int &amp;s = 1</var>)<var>;<a name="index-music_005fdetails-261"></a></var><br>
+<blockquote><p>Creates the object and sets the initial expression to e and the score to use
+to s. By default the score is 1. If the specified expression is invalid, the class will throw an <code>music_details::invalid_regex</code> exception (if they are enabled) or reset the expression to "". 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Destructor: ~music_details <b>(</b>)<var>;<a name="index-_0028-262"></a></var><br>
+<blockquote><p>Destructor. Doesn't do much in this case. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>set</b> (<var>const string &amp;e, const int &amp;s = 1</var>)<var>;<a name="index-set-263"></a></var><br>
+&mdash; Function: void <b>set</b> (<var>const char *e, const int &amp;s = 1</var>)<var>;<a name="index-set-264"></a></var><br>
+<blockquote><p>Sets the expression to e and the score to s. It will also reset the counts
+of rows matched. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string <b>get</b> ()<var> const;<a name="index-get-265"></a></var><br>
+<blockquote><p>Returns the currently stored expression. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: unsigned int <b>possible_matches</b> (<var>const unsigned int &amp;bells</var>)<var> const;<a name="index-possible_005fmatches-266"></a></var><br>
+<blockquote><p>Returns the maximum number of possible matches (in one true extent) for the currently specified expression. <var>bells</var> must be specified as the <code>music_details</code> class has no knowledge of this under normal circumstances. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>possible_score</b> (<var>const unsigned int &amp;bells</var>)<var> const;<a name="index-possible_005fscore-267"></a></var><br>
+<blockquote><p>Returns the maximum possible score (based on one true extent) for the currently specified expression. <var>bells</var> must be specified as the <code>music_details</code> class has no knowledge of this under normal circumstances. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: unsigned int <b>count</b> (<var>const EStroke&amp; = eBoth</var>)<var> const;<a name="index-count-268"></a></var><br>
+<blockquote><p>Returns the number of rows matched based on the stroke that is passed in. 
+If eBoth is passed, then the result will be the handstroke count plus the
+backstroke count. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>total</b> (<var>const EStroke&amp; = eBoth</var>)<var> const;<a name="index-total-269"></a></var><br>
+<blockquote><p>Returns the total score based on the stroke that is passed in. 
+If eBoth is passed, then the result will be the handstroke score plus the
+backstroke score. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>raw_score</b><var> const;<a name="index-raw_005fscore-270"></a></var><br>
+<blockquote><p>Returns the score previously specified to the object. 
+</p></blockquote></div>
+
+   </body></html>
+

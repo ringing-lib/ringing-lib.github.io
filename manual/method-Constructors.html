@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+<title>method Constructors - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-method-Class.html#The-method-Class" title="The method Class">
+<link rel="prev" href="method-Derivation.html#method-Derivation" title="method Derivation">
+<link rel="next" href="Other-method-Functions.html#Other-method-Functions" title="Other method Functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="method-Constructors"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Other-method-Functions.html#Other-method-Functions">Other method Functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="method-Derivation.html#method-Derivation">method Derivation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-method-Class.html#The-method-Class">The method Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">4.1.2 Constructors</h4>
+
+<div class="defun">
+&mdash; Constructor: explicit <b>method::method</b> (<var>int length = 0, int bells = 0, char* name = "Untitled"</var>)<var>;<a name="index-method_003a_003amethod-109"></a></var><br>
+<blockquote><p>This constructor creates an empty method on <var>bells</var> bells, with
+<var>length</var> changes in the lead, and with name <var>name</var>.  All the
+bells stay in the same place for the entire lead. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>method::method</b> (<var>const char* pn, int bells, char* name = "Untitled"</var>)<var>;<a name="index-method_003a_003amethod-110"></a></var><br>
+&mdash; Constructor:  <b>method::method</b> (<var>const string&amp; pn, int bells, const string&amp; name = "Untitled"</var>)<var>;<a name="index-method_003a_003amethod-111"></a></var><br>
+<blockquote><p>This constructor creates a method on <var>bells</var> bells from the given
+place notation, which should be an entire lead.  The method is given the base
+name <var>name</var>.  For information on how to specify
+the place notation, see the discussion of <code>interpret_pn</code> in
+<a href="Other-functions-in-row_002eh.html#Other-functions-in-row_002eh">Other functions in row.h</a>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>method::method</b> (<var>const method&amp; m</var>)<var>;<a name="index-method_003a_003amethod-112"></a></var><br>
+<blockquote><p>This is the copy constructor. 
+</p></blockquote></div>
+
+   </body></html>
+

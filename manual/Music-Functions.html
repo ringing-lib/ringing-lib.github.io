@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+<title>Music Functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="music-class-definition.html#music-class-definition" title="music class definition">
+<link rel="prev" href="Music-Type-Definitions.html#Music-Type-Definitions" title="Music Type Definitions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Music-Functions"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Music-Type-Definitions.html#Music-Type-Definitions">Music Type Definitions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="music-class-definition.html#music-class-definition">music class definition</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">7.4.4 Functions</h4>
+
+<div class="defun">
+&mdash; Function: void <b>push_back</b> (<var>const music_details &amp;</var>)<var>;<a name="index-push_005fback-277"></a></var><br>
+<blockquote><p>This function adds a <code>music_details</code> expression onto the vector of expressions to be matched. It will also add it to the tree ready for processing against rows. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: music::iterator <b>begin</b> (<var>void</var>)<var>;<a name="index-begin-278"></a></var><br>
+&mdash; Function: music::const_iterator <b>begin</b> (<var>void</var>)<var> const;<a name="index-begin-279"></a></var><br>
+<blockquote><p>These functions return an iterator that points at the beginning of the expression list. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: music::iterator <b>end</b> (<var>void</var>)<var>;<a name="index-end-280"></a></var><br>
+&mdash; Function: music::const_iterator <b>end</b> (<var>void</var>)<var> const;<a name="index-end-281"></a></var><br>
+<blockquote><p>These functions return an iterator that points past the end of the expression list. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: music::size_type <b>size</b> (<var>void</var>)<var>;<a name="index-size-282"></a></var><br>
+<blockquote><p>This function returns the number of expressions currently stored. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>set_bells</b> (<var>const unsigned int &amp;b</var>)<var>;<a name="index-set_005fbells-283"></a></var><br>
+<blockquote><p>This function sets the number of bells that will be in the matched rows to <code>b</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: template &lt;class RowIterator&gt; void <b>process_rows</b> (<var>RowIterator first, RowIterator last, bool backstroke = false</var>)<var>;<a name="index-process_005frows-284"></a></var><br>
+<blockquote><p>This function first resets the all of the music counts, and then processes the supplied rows. If backstroke is true, then a backstroke is assumed to be the first row, otherwise it will be noted as a handstroke. The stroke will be toggled for every row processed. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>get_score</b> (<var>const EStroke&amp; = eBoth</var>)<var>;<a name="index-get_005fscore-285"></a></var><br>
+<blockquote><p>Returns the score for music matched at the specified stroke. If eBoth is specified as the stroke, then scores for both strokes are added together and returned. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: unsigned <b>int</b><var> get_count </var>(<var>const EStroke&amp; = eBoth</var>)<var>;<a name="index-int-286"></a></var><br>
+<blockquote><p>Returns the total number of matches for all music expressions at the specified stroke. If eBoth is specified, then the counts for both strokes are added and returned. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>get_possible_score</b> (<var>void</var>)<var>;<a name="index-get_005fpossible_005fscore-287"></a></var><br>
+<blockquote><p>This function returns the maximum possible score that could be obtained matching the expressions currently stored against a true extent on the number of bells previously specified. 
+</p></blockquote></div>
+
+   </body></html>
+

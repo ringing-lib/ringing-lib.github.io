@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+<title>The library_base const_iterator class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Library-framework.html#Library-framework" title="Library framework">
+<link rel="prev" href="The-library_005fbase-class.html#The-library_005fbase-class" title="The library_base class">
+<link rel="next" href="library-internals.html#library-internals" title="library internals">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-library_005fbase-const_005fiterator-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="library-internals.html#library-internals">library internals</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-library_005fbase-class.html#The-library_005fbase-class">The library_base class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Library-framework.html#Library-framework">Library framework</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.3.2 The <code>library_base::const_iterator</code> class</h4>
+
+<p><a name="index-_0040code_007blibrary_005fbase_003a_003aconst_005fiterator_007d-class-191"></a><a name="index-_0040code_007blibrary_003a_003aconst_005fiterator_007d-class-192"></a>
+In the terminology of the STL, the <code>library_entry::const_iterator</code> class
+is an Input Iterator but not a Forward Iterator.  This means that multiple
+iterators on the same library will not work as expected.
+
+<div class="defun">
+&mdash; Constructor:  <b>library_base::const_iterator::const_iterator</b> (<var>void</var>)<var>;<a name="index-library_005fbase_003a_003aconst_005fiterator_003a_003aconst_005fiterator-193"></a></var><br>
+<blockquote><p>This is the default constructor.  It is undefined behaviour to dereference
+or increment the default constructed <code>library_base::const_iterator</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>library_base::const_iterator::const_iterator</b> (<var>library_base* lb, library_entry::impl* val</var>)<var>;<a name="index-library_005fbase_003a_003aconst_005fiterator_003a_003aconst_005fiterator-194"></a></var><br>
+<blockquote><p>This constructor creates an iterator on library <var>lb</var> and with a library
+entry implementation of <var>val</var>.  The constructor takes ownership of
+<var>val</var>, which must have been allocated using <code>new</code>; it does not take
+ownership of <var>lb</var>.  Typically, this function should only be called
+by the <code>begin</code> function of classes derived from <code>library_base</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>library_base::const_iterator::operator==</b> (<var>const library_base::const_iterator&amp; other</var>)<var> const;<a name="index-library_005fbase_003a_003aconst_005fiterator_003a_003aoperator_003d_003d-195"></a></var><br>
+&mdash; Function: bool <b>library_base::const_iterator::operator!=</b> (<var>const library_base::const_iterator&amp; other</var>)<var> const;<a name="index-library_005fbase_003a_003aconst_005fiterator_003a_003aoperator_0021_003d-196"></a></var><br>
+<blockquote><p>Compare two iterators.  It is undefined behaviour to compare two iterators
+from different libraries. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: library_entry <b>library_base::const_iterator::operator*</b> (<var>void</var>)<var> const;<a name="index-library_005fbase_003a_003aconst_005fiterator_003a_003aoperator_002a-197"></a></var><br>
+&mdash; Function: library_entry* <b>library_base::const_iterator::operator-&gt;</b> (<var>void</var>)<var> const;<a name="index-library_005fbase_003a_003aconst_005fiterator_003a_003aoperator_002d_003e-198"></a></var><br>
+<blockquote><p>Dereferences an iterator to retrieve the current <code>library_entry</code>.  It
+is undefined behaviour to dereference an iterator that compares equal to
+the end iterator of that library. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: library_base::const_iterator&amp; <b>library_base::const_iterator::operator++</b> (<var>void</var>)<var> const;<a name="index-library_005fbase_003a_003aconst_005fiterator_003a_003aoperator_002b_002b-199"></a></var><br>
+&mdash; Function: library_base::const_iterator <b>library_base::const_iterator::operator++</b> (<var>int</var>)<var> const;<a name="index-library_005fbase_003a_003aconst_005fiterator_003a_003aoperator_002b_002b-200"></a></var><br>
+<blockquote><p>The prefix and postfix increment operators move the iterator on to point to
+the next entry in the library.  If there are no further entries in the library,
+the iterator will compare equal to the library's end iterator. 
+</p></blockquote></div>
+
+   </body></html>
+

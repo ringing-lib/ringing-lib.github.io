@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+<title>Row Properties - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Rows-and-changes.html#Rows-and-changes" title="Rows and changes">
+<link rel="prev" href="Row-Operations.html#Row-Operations" title="Row Operations">
+<link rel="next" href="Changes.html#Changes" title="Changes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Row-Properties"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Changes.html#Changes">Changes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Row-Operations.html#Row-Operations">Row Operations</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Rows-and-changes.html#Rows-and-changes">Rows and changes</a>
+<hr><br>
+</div>
+
+<h3 class="section">3.2 Row properties</h3>
+
+<p><a name="index-row-properties-11"></a>
+There are several properties of rows which arise from group theory and
+can be useful in looking at properties of methods.
+
+   <p><a name="index-order-12"></a>The <dfn>order</dfn> of a row is the number of times which that row has to be
+multiplied by itself before it gets back to rounds. For example, the row
+<span class="samp">21436587</span> has order 2, because if it is multiplied by itself
+twice, you get back to rounds. Similarly the row <span class="samp">23145678</span> has
+order 3, and the row <span class="samp">23456781</span> has order 8. This can be useful,
+for example, in seeing how many leads of a method are needed in a plain
+course before it comes round.
+
+   <p><a name="index-sign-13"></a><a name="index-parity-14"></a>Another useful concept is the <dfn>sign</dfn> or <dfn>parity</dfn> of a row. A row
+is considered <dfn>even</dfn> if it takes an even number of swaps of pairs of
+bells to get from rounds to that row, and <dfn>odd</dfn> if it takes an odd
+number of swaps. (It can be shown that whether the number is odd or even
+doesn't depend on exactly what the sequence of swaps is).
+
+   <p><a name="index-cycles-15"></a>Finally, every row can be expressed as a set of <dfn>cycles</dfn>. A cycle is
+a set of bells which move round in a sequential way as the row is
+repeated; for example, <span class="samp">21345678</span> has only one cycle, which is
+<span class="samp">(12)</span>; and <span class="samp">12356478</span> has one cycle, which is
+<span class="samp">(456)</span>. Combining these two cycles will give us the row <span class="samp">213564678</span>.
+
+   </body></html>
+

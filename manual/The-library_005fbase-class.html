@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+<title>The library_base class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Library-framework.html#Library-framework" title="Library framework">
+<link rel="prev" href="Library-framework.html#Library-framework" title="Library framework">
+<link rel="next" href="The-library_005fbase-const_005fiterator-class.html#The-library_005fbase-const_005fiterator-class" title="The library_base const_iterator class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-library_005fbase-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="The-library_005fbase-const_005fiterator-class.html#The-library_005fbase-const_005fiterator-class">The library_base const_iterator class</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Library-framework.html#Library-framework">Library framework</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Library-framework.html#Library-framework">Library framework</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.3.1 The <code>library_base</code> class</h4>
+
+<p><a name="index-_0040code_007blibrary_005fbase_007d-class-179"></a>
+The <code>library_base</code> class provides the interface that library
+implementations must implement to create iterators on a library.  It also has
+virtual functions can be overriden to provide more efficient ways to search
+and list libraries.
+
+<div class="defun">
+&mdash; Destructor: virtual <b>library_base::~library_base</b> (<var>void</var>)<var>;<a name="index-library_005fbase_003a_003a_007elibrary_005fbase-180"></a></var><br>
+<blockquote><p>A virtual destructor. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual library_base::const_iterator <b>library_base::begin</b> (<var>void</var>)<var> const = 0;<a name="index-library_005fbase_003a_003abegin-181"></a></var><br>
+<blockquote><p>This should be overriden to construct a <code>library_base::const_iterator</code>
+pointing to the start of the library. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: library_base::const_iterator <b>library_base::end</b> (<var>void</var>)<var> const;<a name="index-library_005fbase_003a_003aend-182"></a></var><br>
+<blockquote><p>This returns a default constructed <code>library_base::const_iterator</code>
+representing one past the end of the library. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual bool <b>library_base::good</b> (<var>void</var>)<var> const = 0;<a name="index-library_005fbase_003a_003agood-183"></a></var><br>
+<blockquote><p>This function should be overriden to return true if a valid library is
+currently loaded and false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual method <b>library_base::load</b> (<var>const char* name, int stage</var>)<var> const;<a name="index-library_005fbase_003a_003aload-184"></a></var><br>
+<blockquote><p>The default implementation of <code>load</code> iterates through the library
+searching for an entry with the correct name.  When comparing method names,
+it does so in a case-insensitive manner.  If <var>stage</var> is non-zero,
+<code>load</code> requires that the method is on that number of bells.
+
+        <p>If no such method is found, if exceptions are enabled, an exception of class
+<code>library_base::invalid_name</code> will be thrown; otherwise, the method
+returned will be an empty method with the name <span class="samp">"Not Found"</span>.
+
+        <p>Library implementations may wish to override this if there is a more
+efficient way to locate the method. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual int <b>library_base::dir</b> (<var>list&lt;string&gt;&amp; result</var>)<var> const;<a name="index-library_005fbase_003a_003adir-185"></a></var><br>
+&mdash; Function: virtual int <b>library_base::mdir</b> (<var>list&lt;method&gt;&amp; result</var>)<var> const;<a name="index-library_005fbase_003a_003amdir-186"></a></var><br>
+<blockquote><p>The default implementations of <code>dir</code> and <code>mdir</code> iterate through
+the library, pushing each name (in the case of <code>dir</code>) or method
+(in the case of <code>mdir</code>) onto <var>result</var>. The return value is
+the number of values pushed onto <code>result</code>.
+
+        <p>Library implementations may wish to override this if there is a more
+efficient way to locate the method. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual bool <b>library_base::writeable</b> (<var>void</var>)<var> const;<a name="index-library_005fbase_003a_003awriteable-187"></a></var><br>
+&mdash; Function: virtual bool <b>library_base::save</b> (<var>const method&amp; m</var>)<var>;<a name="index-library_005fbase_003a_003asave-188"></a></var><br>
+&mdash; Function: virtual bool <b>library_base::rename_method</b> (<var>const string&amp; name1, const string&amp; name2</var>)<var>;<a name="index-library_005fbase_003a_003arename_005fmethod-189"></a></var><br>
+&mdash; Function: virtual bool <b>library_base::remove</b> (<var>const string&amp; name</var>)<var>;<a name="index-library_005fbase_003a_003aremove-190"></a></var><br>
+<blockquote><p>These functions are for writing to method libraries.  This functionality is
+still experimental. 
+</p></blockquote></div>
+
+   </body></html>
+

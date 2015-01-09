@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+<title>Library framework - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Method-libraries.html#Method-libraries" title="Method libraries">
+<link rel="prev" href="Built_002din-library-types.html#Built_002din-library-types" title="Built-in library types">
+<link rel="next" href="Implementing-new-library-classes.html#Implementing-new-library-classes" title="Implementing new library classes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Library-framework"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Implementing-new-library-classes.html#Implementing-new-library-classes">Implementing new library classes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Built_002din-library-types.html#Built_002din-library-types">Built-in library types</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Method-libraries.html#Method-libraries">Method libraries</a>
+<hr><br>
+</div>
+
+<h3 class="section">5.3 Library framework</h3>
+
+<p>This section describes in greater detail how the various classes which
+implement method libraries interact.  It is intended for those writing
+new classes to support new library types.
+
+   <p>The basic library framework comprises five classes, all of which are
+declared in the header file <span class="file">ringing/library.h</span>.
+
+<!-- Unfortunately it seems that the @code macro cannot be used in the -->
+<!-- name argument of @deftp as makeinfo -html can't cope with it. -->
+<div class="defun">
+&mdash; Class: <b>class library_base</b><var><a name="index-class-library_005fbase-174"></a></var><br>
+<blockquote><p>This is the basic interface that all implementations will need to implement. 
+It describes how to iterate through a library, and provides hooks that
+can be used to provide more efficient algorithms for searching through the
+library. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Class: <b>class library</b><var><a name="index-class-library-175"></a></var><br>
+<blockquote><p>The <code>library</code> class serves two purposes: it acts as a shared pointer
+to a library_base, and it handles the auto-detection of libraries. 
+Implementations only need to derive from this if they want to provide an
+alternative to the standard auto-detection mechansim. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Class: <b>class library_entry</b><var><a name="index-class-library_005fentry-176"></a></var><br>
+<blockquote><p>This class represents an entry in a library.  It has value semantics; thus
+it is safe to hold onto multiple entries from a single library. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Class: <b>class library_base::const_iterator</b><var><a name="index-class-library_005fbase_003a_003aconst_005fiterator-177"></a></var><br>
+<blockquote><p>This is an input iterator that iterates over the entries in a library. 
+Dereferencing the iterator returns a <code>library_entry</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Class: <b>class library_entry::impl</b><var><a name="index-class-library_005fentry_003a_003aimpl-178"></a></var><br>
+<blockquote><p>Each <code>library_entry</code> class holds onto a pointer to one of these.  It
+provides an interface to read library entries that all library
+implementations must implement. 
+</p></blockquote></div>
+
+<ul class="menu">
+<li><a accesskey="1" href="The-library_005fbase-class.html#The-library_005fbase-class">The library_base class</a>
+<li><a accesskey="2" href="The-library_005fbase-const_005fiterator-class.html#The-library_005fbase-const_005fiterator-class">The library_base const_iterator class</a>
+<li><a accesskey="3" href="library-internals.html#library-internals">library internals</a>
+<li><a accesskey="4" href="library_005fentry-internals.html#library_005fentry-internals">library_entry internals</a>
+<li><a accesskey="5" href="The-library_005fentry-impl-class.html#The-library_005fentry-impl-class">The library_entry impl class</a>
+</ul>
+
+   </body></html>
+

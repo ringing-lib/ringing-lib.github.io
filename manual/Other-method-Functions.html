@@ -1,0 +1,176 @@
+<html lang="en">
+<head>
+<title>Other method Functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-method-Class.html#The-method-Class" title="The method Class">
+<link rel="prev" href="method-Constructors.html#method-Constructors" title="method Constructors">
+<link rel="next" href="method-static-Functions.html#method-static-Functions" title="method static Functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Other-method-Functions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="method-static-Functions.html#method-static-Functions">method static Functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="method-Constructors.html#method-Constructors">method Constructors</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-method-Class.html#The-method-Class">The method Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">4.1.3 Other functions</h4>
+
+<div class="defun">
+&mdash; Function: const char* <b>method::name</b> (<var>void</var>)<var> const;<a name="index-method_003a_003aname-113"></a></var><br>
+<blockquote><p>This returns the base name of the method.  Note that this may be an empty
+string, for example in Little Bob. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>method::name</b> (<var>const char* name</var>)<var>;<a name="index-method_003a_003aname-114"></a></var><br>
+&mdash; Function: void <b>method::name</b> (<var>const string&amp; name</var>)<var>;<a name="index-method_003a_003aname-115"></a></var><br>
+<blockquote><p>This sets the base name of the method to <var>name</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>method::bells</b> (<var>void</var>)<var> const;<a name="index-method_003a_003abells-116"></a></var><br>
+<blockquote><p>This returns the number of bells on which the method is defined. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>method::length</b> (<var>void</var>)<var> const;<a name="index-method_003a_003alength-117"></a></var><br>
+<blockquote><p>This returns the number of changes in a lead of the method. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>method::push_back</b> (<var>const change&amp; c</var>)<var>;<a name="index-method_003a_003apush_005fback-118"></a></var><br>
+&mdash; Function: void <b>method::push_back</b> (<var>const string&amp; s</var>)<var>;<a name="index-method_003a_003apush_005fback-119"></a></var><br>
+<blockquote><p>These utility functions add a change to the end of the method.  In
+the first case, <var>c</var> is the change to be added; in the second case,
+<var>s</var> is place notation for the change to be added. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: row <b>method::lh</b> (<var>void</var>)<var> const;<a name="index-method_003a_003alh-120"></a></var><br>
+<blockquote><p>This returns the first lead head of the method. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>method::issym</b> (<var>void</var>)<var> const;<a name="index-method_003a_003aissym-121"></a></var><br>
+<blockquote><p>This returns true if the method is symmetrical about the half lead (and has
+an even number of changes in the lead), or false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>method::isdouble</b> (<var>void</var>)<var> const;<a name="index-method_003a_003aisdouble-122"></a></var><br>
+<blockquote><p>This returns true if the method is double, or false otherwise.  Note that
+double does not imply symmetrical. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>method::isregular</b> (<var>void</var>)<var> const;<a name="index-method_003a_003aisregular-123"></a></var><br>
+<blockquote><p>This returns true if the method is regular (that is, has Plain Bob lead
+heads), or false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>method::huntbells</b> (<var>void</var>)<var> const;<a name="index-method_003a_003ahuntbells-124"></a></var><br>
+<blockquote><p>This returns the number of hunt bells in the method. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>method::leads</b> (<var>void</var>)<var> const;<a name="index-method_003a_003aleads-125"></a></var><br>
+<blockquote><p>This returns the number of leads in the plain course of the method. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: char* <b>method::lhcode</b> (<var>void</var>)<var> const;<a name="index-method_003a_003alhcode-126"></a></var><br>
+<blockquote><p>This returns the standard code for the lead end and lead head of the
+method.  The result is stored in a static internal buffer. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>method::issym</b> (<var>bell b</var>)<var> const;<a name="index-method_003a_003aissym-127"></a></var><br>
+<blockquote><p>This returns true if the path of bell <var>b</var> in a lead of the method is
+symmetrical about the half lead, or false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>method::isplain</b> (<var>bell b = 0</var>)<var> const;<a name="index-method_003a_003aisplain-128"></a></var><br>
+<blockquote><p>This returns true if bell <var>b</var> plain hunts for the whole lead of the
+method, or false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>method::hasdodges</b> (<var>bell b</var>)<var> const;<a name="index-method_003a_003ahasdodges-129"></a></var><br>
+<blockquote><p>This returns true if bell <var>b</var> dodges during the lead, or false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>method::hasplaces</b> (<var>bell b</var>)<var> const;<a name="index-method_003a_003ahasplaces-130"></a></var><br>
+<blockquote><p>This returns true if bell <var>b</var> makes any internal places during the lead,
+or false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>method::methclass</b> (<var>void</var>)<var> const;<a name="index-method_003a_003amethclass-131"></a></var><br>
+<blockquote><p>This function returns an integer which depends on the class of the
+method.  The following values are defined:
+     <pre class="example">          enum method::m_class {
+            M_UNKNOWN, M_PRINCIPLE, M_BOB, M_PLACE, M_TREBLE_BOB, M_SURPRISE,
+            M_DELIGHT, M_TREBLE_PLACE, M_ALLIANCE, M_HYBRID, M_SLOW_COURSE,
+            M_MASK = 0x0f,
+            M_DIFFERENTIAL = 0x10,
+            M_LITTLE = 0x80
+          };
+     </pre>
+        <p>The <code>M_DIFFERENTIAL</code> and <code>M_LITTLE</code> bits are flags which will be
+either set or cleared accordingly.  (For the purpose of this function,
+&ldquo;Differential&rdquo; is considered a method class.  Differential hunters will have
+the <code>M_DIFFERENTIAL</code> bit set, together with one of the other classes;
+differential methods will return <code>M_DIFFERENTIAL | M_PRINCIPLE</code>.) 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: char* <b>method::fullname</b> (<var>char* buffer</var>)<var> const;<a name="index-method_003a_003afullname-132"></a></var><br>
+<blockquote><p>This function places the full name of the method in <var>buffer</var>, which
+should be long enough to receive it, and returns a pointer to it.  The
+full name consists of:
+          <ul>
+<li>the base name of the method;
+<li>the word &ldquo;Little&rdquo;, if appropriate;
+<li>the class of the method, or none if it is a principle;
+<li>the stage (number of bells) of the method. 
+</ul>
+
+        <p>Note that Grandsire, Union and their related methods are treated specially:
+the full name of these methods does not include their class, nor in the
+case of Little Grandsire does it contain &ldquo;Little&rdquo;. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string <b>method::fullname</b> (<var>void</var>)<var> const;<a name="index-method_003a_003afullname-133"></a></var><br>
+<blockquote><p>This function returns the full name of the method as a string. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>method::maxblows</b> (<var>void</var>)<var> const;<a name="index-method_003a_003amaxblows-134"></a></var><br>
+<blockquote><p>This function returns the maximum consecutive blows made in any place in
+this method.  (If the method has one bell fixed throughout, the lead length
+is returned.) 
+</p></blockquote></div>
+
+   </body></html>
+

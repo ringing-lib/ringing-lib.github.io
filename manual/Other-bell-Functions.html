@@ -1,0 +1,52 @@
+<html lang="en">
+<head>
+<title>Other bell Functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-bell-Class.html#The-bell-Class" title="The bell Class">
+<link rel="prev" href="bell-Operators.html#bell-Operators" title="bell Operators">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Other-bell-Functions"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="bell-Operators.html#bell-Operators">bell Operators</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-bell-Class.html#The-bell-Class">The bell Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.4.4 Other functions</h4>
+
+<div class="defun">
+&mdash; Function: bell&amp; <b>bell::from_char</b> (<var>char c</var>)<var>;<a name="index-bell_003a_003afrom_005fchar-25"></a></var><br>
+<blockquote><p>This function interprets the character <var>c</var> as a bell, and assigns
+that value to the bell object.  See the next function for the mapping
+between characters and bells.  If the character does not represent a
+valid bell, then an exception of the class <code>bell::invalid</code> is
+thrown; if you have disabled exceptions, the bell is set to the value
+<code>bell::MAX_BELLS</code>.  The function returns <code>*this</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: char <b>bell::to_char</b> (<var>void</var>)<var> const;<a name="index-bell_003a_003ato_005fchar-26"></a></var><br>
+<blockquote><p>This function returns a character indicating the bell represented by the
+object.  The characters used are, in order:
+     <pre class="example">          1234567890ETABCDFGHJKLMNPQRSUVWYZ
+     </pre>
+        </blockquote></div>
+
+   </body></html>
+

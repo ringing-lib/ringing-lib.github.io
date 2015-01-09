@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+<title>The row_block class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Rows-and-changes.html#Rows-and-changes" title="Rows and changes">
+<link rel="prev" href="The-permute-function.html#The-permute-function" title="The permute function">
+<link rel="next" href="Other-functions-in-row_002eh.html#Other-functions-in-row_002eh" title="Other functions in row.h">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-row_005fblock-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Other-functions-in-row_002eh.html#Other-functions-in-row_002eh">Other functions in row.h</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-permute-function.html#The-permute-function">The permute function</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Rows-and-changes.html#Rows-and-changes">Rows and changes</a>
+<hr><br>
+</div>
+
+<h3 class="section">3.8 The <code>row_block</code> class</h3>
+
+<p><a name="index-_0040code_007brow_005fblock_007d-class-103"></a>
+The <code>row_block</code> class is an array of rows which has associated with
+it a reference to an array of changes, and can recalculate itself from
+those changes.  For example, suppose that the variable <code>c</code> of type
+<code>vector&lt;change&gt;</code> holds one lead of a method; then it is possible to
+define a variable of type <code>row_class</code> which, once it is told what
+the lead head is, will calculate the rows for one lead of the method.
+
+   <p>Note that the <code>row_block</code> object does not store its own copy of the
+<code>vector&lt;change&gt;</code> object from which it is calculated.  This means
+that the changes may be altered and the resulting rows recalculated
+easily; it also means that the changes must not be deallocated while the
+<code>row_block</code> object is in existence.
+
+<ul class="menu">
+<li><a accesskey="1" href="row_005fblock-Derivation.html#row_005fblock-Derivation">row_block Derivation</a>
+<li><a accesskey="2" href="row_005fblock-Constructors.html#row_005fblock-Constructors">row_block Constructors</a>
+<li><a accesskey="3" href="Other-row_005fblock-Functions.html#Other-row_005fblock-Functions">Other row_block Functions</a>
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+<title>row static Functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-row-Class.html#The-row-Class" title="The row Class">
+<link rel="prev" href="Other-row-Functions.html#Other-row-Functions" title="Other row Functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="row-static-Functions"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Other-row-Functions.html#Other-row-Functions">Other row Functions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-row-Class.html#The-row-Class">The row Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.5.5 <code>static</code> functions</h4>
+
+<div class="defun">
+&mdash; Function: static row <b>row::rounds</b> (<var>int n</var>)<var>;<a name="index-row_003a_003arounds-62"></a></var><br>
+&mdash; Function: static row <b>row::queens</b> (<var>int n</var>)<var>;<a name="index-row_003a_003aqueens-63"></a></var><br>
+&mdash; Function: static row <b>row::kings</b> (<var>int n</var>)<var>;<a name="index-row_003a_003akings-64"></a></var><br>
+&mdash; Function: static row <b>row::tittums</b> (<var>int n</var>)<var>;<a name="index-row_003a_003atittums-65"></a></var><br>
+&mdash; Function: static row <b>row::reverse_rounds</b> (<var>int n</var>)<var>;<a name="index-row_003a_003areverse_005frounds-66"></a></var><br>
+<blockquote><p>These return the row corresponding to rounds, queens, kings, tittums and
+reverse rounds respectively on <var>n</var> bells. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: static row <b>row::pblh</b> (<var>int n, int h = 1</var>)<var>;<a name="index-row_003a_003apblh-67"></a></var><br>
+<blockquote><p>This returns the first lead head of Plain Bob (<var>h</var> = 1), Grandsire
+(<var>h</var> = 2), or more generally the Plain Bob type method on <var>n</var>
+bells with <var>h</var> hunt bells. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: static row <b>row::cyclic</b> (<var>int n, int h = 1, int c = 1</var>)<var>;<a name="index-row_003a_003acyclic-68"></a></var><br>
+<blockquote><p>This returns a cyclic row on <var>n</var> bells with <var>h</var> initial fixed
+(hunt) bells.  The variable <var>c</var> controls the number of bells moved
+from the front of the row to the end.  Thus, <code>cyclic(6,1,2) == "145623"</code>. 
+</p></blockquote></div>
+
+   </body></html>
+

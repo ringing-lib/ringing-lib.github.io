@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+<title>MicroSIRIL libraries - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Built_002din-library-types.html#Built_002din-library-types" title="Built-in library types">
+<link rel="prev" href="Central-Council-libraries.html#Central-Council-libraries" title="Central Council libraries">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="MicroSIRIL-libraries"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Central-Council-libraries.html#Central-Council-libraries">Central Council libraries</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Built_002din-library-types.html#Built_002din-library-types">Built-in library types</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.2.3 MicroSIRIL libraries</h4>
+
+<p>MicroSIRIL was an ingenious and widely-used early peal proving program
+for PCs.  The method libraries used are in a simple text format, with
+one method per line; they contain, for each method, simply the name,
+lead head code and place notation.
+
+   <p>The Ringing Class Library can read MicroSIRIL libraries, providing they
+satisfy one requirement: the last portion of the filename, before any
+extension, must be the number of bells on which all the methods in the
+file are.  This is because it is impossible to tell the stage from just
+the place notation.  So, for example, a method library file might be
+called <span class="file">s8</span> or <span class="file">new_principles10.txt</span>.
+
+   <p>Beware that the MicroSIRIL library interface will agree to open any file
+having a name satisfying the above requirement.  For this reason, if
+auto-detecting method library types, you may want to put the MicroSIRIL
+library type at the end of your list.
+
+   <p>When reading methods from MicroSIRIL libraries, remember that the name
+of each method may only consist of a single word; usually names
+consisting of several words are run together into one.
+
+<ul class="menu">
+<li><a accesskey="1" href="The-mslib-class.html#The-mslib-class">The mslib class</a>
+<li><a accesskey="2" href="MicroSIRIL-library-facets.html#MicroSIRIL-library-facets">MicroSIRIL library facets</a>
+</ul>
+
+   </body></html>
+

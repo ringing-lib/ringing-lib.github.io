@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+<title>Producing printed output - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Musical-Analysis.html#Musical-Analysis" title="Musical Analysis">
+<link rel="next" href="Copying-this-manual.html#Copying-this-manual" title="Copying this manual">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Producing-printed-output"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Copying-this-manual.html#Copying-this-manual">Copying this manual</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Musical-Analysis.html#Musical-Analysis">Musical Analysis</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">8 Producing printed output</h2>
+
+<p><a name="index-printing-300"></a>
+The Ringing Class Library provides a flexible mechanism for producing
+printed output of rows, methods and lines.  The way this mechanism is
+designed means that the low-level details of printing are hidden from
+the programmer.  Currently the classes in the library support output in
+PostScript and PDF formats, and the modularity of the printing system
+makes it easy to extend the library to provide other output formats.
+
+   <p>Basic printing is provided in two classes: the <code>printpage</code> class
+and the <code>printrow</code> class.  The first of these deals with placing
+text and other objects directly on the page; the second allows for
+formatted output of rows and lines.  These classes are both pure virtual
+classes, which are specialised by subclasses to allow for different
+output formats.
+
+   <p>Printing of whole methods is accomplished by the <code>printmethod</code>
+object.  This is not as flexible as the more generic functions of the
+lower-level printing objects, but exists to provide a quick and easy way
+to print out methods in a moderately variable format.
+
+   <p>There are certain rules which should be followed when using the printing
+classes.  For a single <code>printpage</code> object, only one <code>printrow</code>
+object may exist at any one time.  All <code>printrow</code> objects associated
+to a <code>printpage</code> object must be destroyed before starting a new page,
+and before destroying the <code>printpage</code> object.  Failure to observe
+these rules may result in unusable output.
+
+<ul class="menu">
+<li><a accesskey="1" href="Auxiliary-classes.html#Auxiliary-classes">Auxiliary classes</a>
+<li><a accesskey="2" href="The-printpage-class.html#The-printpage-class">The printpage class</a>
+<li><a accesskey="3" href="The-printrow-class.html#The-printrow-class">The printrow class</a>
+<li><a accesskey="4" href="Printing-whole-methods.html#Printing-whole-methods">Printing whole methods</a>
+<li><a accesskey="5" href="Printing-in-PostScript.html#Printing-in-PostScript">Printing in PostScript</a>
+<li><a accesskey="6" href="Printing-to-PDF-files.html#Printing-to-PDF-files">Printing to PDF files</a>
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+<title>Music Regular Expressions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Musical-Analysis.html#Musical-Analysis" title="Musical Analysis">
+<link rel="prev" href="Stroke-Enumeration.html#Stroke-Enumeration" title="Stroke Enumeration">
+<link rel="next" href="Using-the-Music-Class.html#Using-the-Music-Class" title="Using the Music Class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Music-Regular-Expressions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Using-the-Music-Class.html#Using-the-Music-Class">Using the Music Class</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Stroke-Enumeration.html#Stroke-Enumeration">Stroke Enumeration</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Musical-Analysis.html#Musical-Analysis">Musical Analysis</a>
+<hr><br>
+</div>
+
+<h3 class="section">7.2 Music Regular Expressions</h3>
+
+<p><a name="index-Regular-Expressions-255"></a><a name="index-Specifiying-Musical-Rows-256"></a><a name="index-Musical-Rows-257"></a><a name="index-Music-Expressions-258"></a>
+The <code>music_details</code> class provides the means to describe musical
+rows to the <code>music</code> class. The <code>music_details</code> class stores
+details of the expression to be matched (as a string) and an associated
+rating, if the user so desires.
+
+   <p>Ratings may be positive or negative, this allows a total weighted score
+to be calculated from the sum of the result scores. For example, 678s
+may be rated at a +2, but 87s at backstroke rated as -10.
+
+   <p>When a match sequence is run via the music class, if a row matches that
+described by the details provided to a <code>music_details</code> object, then
+the count will be incremented.
+
+   <p>The result can either be returned as a raw count, or as a score calculated from the multiplication of the count and the given rating.
+
+   <p>If it is specified, then the count or score can be return for just the handstroke, backstroke or both.
+
+   <p>Further details relating to the music_details class can be accessed from the menu below:
+
+<ul class="menu">
+<li><a accesskey="1" href="Expression-Language.html#Expression-Language">Expression Language</a>
+<li><a accesskey="2" href="Music_005fDetails-class.html#Music_005fDetails-class">Music_Details class</a>
+</ul>
+
+   </body></html>
+

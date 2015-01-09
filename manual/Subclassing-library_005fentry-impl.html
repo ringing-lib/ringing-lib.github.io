@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+<title>Subclassing library_entry impl - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Implementing-new-library-classes.html#Implementing-new-library-classes" title="Implementing new library classes">
+<link rel="prev" href="Subclassing-library_005fbase.html#Subclassing-library_005fbase" title="Subclassing library_base">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Subclassing-library_005fentry-impl"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Subclassing-library_005fbase.html#Subclassing-library_005fbase">Subclassing library_base</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Implementing-new-library-classes.html#Implementing-new-library-classes">Implementing new library classes</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.4.4 Subclassing library_entry impl</h4>
+
+<p>The last step of implementing a library is to provide a class that implements
+the <code>library_entry::impl</code> interface, and most importantly, the
+<code>library_entry::impl::readentry</code> function.  There are various possible
+implementation strategies: the simplest is to get <code>readentry</code> to parse
+the whole of the library entry, store the name, place notation and so on in
+data members, and then have the <code>name</code>, <code>pn</code>, etc. functions return
+these.  This is illustrated below:
+
+<pre class="example">     class mylibrary : public library_base {
+       class my_library::entry_type : public library_entry::impl {
+     
+         // Do a deep-copy of the entry
+         virtual library_entry::impl* clone() const {
+           return new entry_type(*this);
+         }
+     
+         // Parse the entry
+         virtual bool readentry( library_bas&amp; lb ) {
+           ifstream &amp;ifs = dynamic_cast&lt; cclib&amp; &gt;( lb ).ifs;
+           if (!ifs) return false; // Have we reached the end of file?
+           string entry; getline( ifs, entry );
+     
+           // Assume the entry is in the format Method Name:Place Notation
+           string::size_type p = linebuf.find(':');
+           name_ = string( entry, 0, p );
+           pn_   = string( entry, p+1, string::npos );
+           return true;
+         }
+     
+         // Access parts of the entry
+         virtual string name() const { return name_; }
+         virtual string pn() const   { return pn_;   }
+     
+         string name_, pn_;
+       };
+     
+       ifstream ifs;
+     };
+</pre>
+   <p>An alternative implementation strategy would be to have <code>readline</code> store
+the whole line in data member (i.e. make <var>entry</var> a data member), and
+then get <code>name</code> and <code>pn</code> to generate these on-the-fly from the
+<var>entry</var> string.
+
+   </body></html>
+

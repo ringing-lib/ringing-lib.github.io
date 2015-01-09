@@ -1,0 +1,65 @@
+<html lang="en">
+<head>
+<title>The proof class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Proof.html#Proof" title="Proof">
+<link rel="prev" href="Proof.html#Proof" title="Proof">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-proof-class"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Proof.html#Proof">Proof</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Proof.html#Proof">Proof</a>
+<hr><br>
+</div>
+
+<h3 class="section">6.1 The <code>proof</code> class</h3>
+
+<p>The proof class provides a simple way of checking that a block of rows
+are true.  It provides functions for finding out where a particular block
+has failed.  Additionally, it will can check blocks that are more than
+one extent long.
+
+   <p>It is a template class, defined as <code>template &lt;class RowIterator&gt;
+class proof;</code>.  You can therefore decide on your own method of
+generating rows, as long as you can provide an iterator (see the
+<acronym>STL</acronym>) for it.
+
+   <p>It will check ALL rows given; therefore, if rounds are at the start and
+end, then one of them should be removed before passing to the object.
+
+   <p>The proof class only stores the results: it does not make a copy of the
+actual rows.  However, pointers to false rows will be stored, so don't
+destroy your rows before getting all the proof results.  This may be
+changed in a later release.
+
+   <p>Note: To avoid problems, make sure that all the rows have the same number
+of bells in them, otherwise 12345 will not 123456.
+
+<ul class="menu">
+<li><a accesskey="1" href="proof-Derivation.html#proof-Derivation">proof Derivation</a>
+<li><a accesskey="2" href="proof-Constructors.html#proof-Constructors">proof Constructors</a>
+<li><a accesskey="3" href="proof-Functions.html#proof-Functions">proof Functions</a>
+<li><a accesskey="4" href="proof-Operators.html#proof-Operators">proof Operators</a>
+<li><a accesskey="5" href="proof-Output.html#proof-Output">proof Output</a>
+<li><a accesskey="6" href="Falseness-Storage.html#Falseness-Storage">Falseness Storage</a>
+<li><a accesskey="7" href="How-Proof-Works.html#How-Proof-Works">How Proof Works</a>
+</ul>
+
+   </body></html>
+

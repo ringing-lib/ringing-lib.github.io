@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+<title>library internals - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Library-framework.html#Library-framework" title="Library framework">
+<link rel="prev" href="The-library_005fbase-const_005fiterator-class.html#The-library_005fbase-const_005fiterator-class" title="The library_base const_iterator class">
+<link rel="next" href="library_005fentry-internals.html#library_005fentry-internals" title="library_entry internals">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="library-internals"></a>Next:&nbsp;<a rel="next" accesskey="n" href="library_005fentry-internals.html#library_005fentry-internals">library_entry internals</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-library_005fbase-const_005fiterator-class.html#The-library_005fbase-const_005fiterator-class">The library_base const_iterator class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Library-framework.html#Library-framework">Library framework</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.3.3 <code>library</code> internals</h4>
+
+<p><a name="index-_0040code_007blibrary_007d-internals-201"></a>
+
+<div class="defun">
+&mdash; Constructor:  <b>library::library</b> (<var>void</var>)<var>;<a name="index-library_003a_003alibrary-202"></a></var><br>
+<blockquote><p>Default constructs a library holding a <code>NULL</code> <code>library_base</code>
+pointer. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>library::library</b> (<var>const string&amp; filename</var>)<var>;<a name="index-library_003a_003alibrary-203"></a></var><br>
+<blockquote><p>This constructor attempts to automatically detect what type of library
+<var>filename</var> is, and create an appropriate <code>library_base</code> to
+interpret it.   For a library type to be correctly auto-detected a
+function of type <code>library::init_function</code> must be registered
+with <code>library::addtype</code>. 
+After constructing a library, the <code>library::good</code> function can be
+used see if auto-detection succeeded. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>library::library</b> (<var>library_base* lb</var>)<var>;<a name="index-library_003a_003alibrary-204"></a></var><br>
+<blockquote><p>This constructor is provided to allow libraries the flexibility not to use
+the auto-detection mechanism.  The argument, <var>lb</var>, must have allocated
+by <code>new</code> and gets deleted by the <code>library</code>'s destructor. 
+For more information on how to use this, see
+<a href="Alternative-creation-mechanisms.html#Alternative-creation-mechanisms">Alternative creation mechanisms</a>. 
+</p></blockquote></div>
+
+<!-- I've used deftypefn rather than deftp because (i) @deftp formats the -->
+<!-- type incorrectly and (ii) the typedef is for a function-pointer. -->
+<div class="defun">
+&mdash; Typedef: typedef library_base* <b>(* library::init_function )</b> (<var>const string&amp; filename</var>)<var>;<a name="index-_0028_002a-library_003a_003ainit_005ffunction-_0029-205"></a></var><br>
+<blockquote><p>Functions with this signature are used by the <code>library</code> construtor to
+attempt to load a library.  Each derived library class that supports
+auto-detection should register a function of this signature
+with the <code>library</code> class by calling the <code>library::addtype</code> function. 
+When these functions get called, <var>filename</var> is the name of the
+library file.  If a library can read the file it should return a pointer to
+a class derived from <code>library_base</code> allocated with <code>new</code>; otherwise
+the function should return NULL. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: static void <b>library::addtype</b> (<var>library::init_function lt</var>)<var><a name="index-library_003a_003aaddtype-206"></a></var><br>
+<blockquote><p>This is used to register a specific (derived) library class to the list of
+classes that can be auto-detected.  This function is typically called by the
+static function <code>registerlib</code> in the derived classes. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Typedef: typedef library_base::const_iterator <b>library::const_iterator;</b><var><a name="index-library_003a_003aconst_005fiterator_003b-207"></a></var><br>
+&mdash; Function: library::const_iterator <b>library::begin</b> (<var>void</var>)<var> const;<a name="index-library_003a_003abegin-208"></a></var><br>
+&mdash; Function: library::const_iterator <b>library::end</b> (<var>void</var>)<var> const;<a name="index-library_003a_003aend-209"></a></var><br>
+<blockquote><p>If the library holds a <code>library_base</code>, these function call down to the
+corresponding functions on that, otherwise both functions return a default
+constructed <code>const_iterator</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>library_base::good</b> (<var>void</var>)<var> const;<a name="index-library_005fbase_003a_003agood-210"></a></var><br>
+<blockquote><p>This function returns true if the library is valid, and false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual method <b>library::load</b> (<var>const char* name, int stage</var>)<var> const;<a name="index-library_003a_003aload-211"></a></var><br>
+&mdash; Function: virtual int <b>library::dir</b> (<var>list&lt;string&gt;&amp; result</var>)<var> const;<a name="index-library_003a_003adir-212"></a></var><br>
+&mdash; Function: virtual int <b>library::mdir</b> (<var>list&lt;method&gt;&amp; result</var>)<var> const;<a name="index-library_003a_003amdir-213"></a></var><br>
+&mdash; Function: virtual bool <b>library::writeable</b> (<var>void</var>)<var> const;<a name="index-library_003a_003awriteable-214"></a></var><br>
+&mdash; Function: virtual bool <b>library::save</b> (<var>const method&amp; m</var>)<var>;<a name="index-library_003a_003asave-215"></a></var><br>
+&mdash; Function: virtual bool <b>library::rename_method</b> (<var>const string&amp; name1, const string&amp; name2</var>)<var>;<a name="index-library_003a_003arename_005fmethod-216"></a></var><br>
+&mdash; Function: virtual bool <b>library::remove</b> (<var>const string&amp; name</var>)<var>;<a name="index-library_003a_003aremove-217"></a></var><br>
+<blockquote><p>These functions all call down to the corresponding functions on the
+<code>library_base</code>; see <a href="The-library_005fbase-class.html#The-library_005fbase-class">The library_base class</a> for details. 
+They must not be called if <code>library::good()</code> is false. 
+</p></blockquote></div>
+
+   </body></html>
+

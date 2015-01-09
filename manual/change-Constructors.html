@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+<title>change Constructors - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-change-Class.html#The-change-Class" title="The change Class">
+<link rel="prev" href="change-Derivation.html#change-Derivation" title="change Derivation">
+<link rel="next" href="change-Operators.html#change-Operators" title="change Operators">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="change-Constructors"></a>Next:&nbsp;<a rel="next" accesskey="n" href="change-Operators.html#change-Operators">change Operators</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="change-Derivation.html#change-Derivation">change Derivation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-change-Class.html#The-change-Class">The change Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.6.2 Constructors</h4>
+
+<div class="defun">
+&mdash; Constructor:  <b>change::change</b> (<var>void</var>)<var>;<a name="index-change_003a_003achange-70"></a></var><br>
+<blockquote><p>This constructs an empty change. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor: explicit <b>change::change</b> (<var>int n</var>)<var>;<a name="index-change_003a_003achange-71"></a></var><br>
+<blockquote><p>This constructs an empty change for <var>n</var> bells, which will initially
+contain no swaps, that is, all bells will remain in the same place. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>change::change</b> (<var>const change&amp; c</var>)<var>;<a name="index-change_003a_003achange-72"></a></var><br>
+<blockquote><p>This is the copy constructor; it makes a new copy of <var>c</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>change::change</b> (<var>int n, char* pn</var>)<var>;<a name="index-change_003a_003achange-73"></a></var><br>
+&mdash; Constructor:  <b>change::change</b> (<var>int n, const string&amp; pn</var>)<var>;<a name="index-change_003a_003achange-74"></a></var><br>
+<blockquote><p>This constructs a change on <var>n</var> bells, with place notation as given
+in <var>pn</var>. This should consist of a sequence of characters which signify
+the places to be made, arranged in ascending order. If no places are to
+be made, the string <code>"X"</code> should be used. Note that you
+can miss out external places, unless no internal places are made at
+all.  If the place notation is not valid, this constructor will throw an
+exception of class <code>change::invalid</code>. 
+</p></blockquote></div>
+
+   </body></html>
+

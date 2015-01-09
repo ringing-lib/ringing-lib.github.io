@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+<title>Initialisation for libraries - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Using-libraries.html#Using-libraries" title="Using libraries">
+<link rel="prev" href="Using-libraries.html#Using-libraries" title="Using libraries">
+<link rel="next" href="The-library-class.html#The-library-class" title="The library class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Initialisation-for-libraries"></a>Next:&nbsp;<a rel="next" accesskey="n" href="The-library-class.html#The-library-class">The library class</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Using-libraries.html#Using-libraries">Using libraries</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Using-libraries.html#Using-libraries">Using libraries</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.1.1 Initialisation</h4>
+
+<p>Before the auto-detection of libraries will work, the <code>library</code>
+class needs to know which library types it should try when opening a
+library.  This is done by <dfn>registering</dfn> the different library types,
+and should be done sometime during program startup.  To make this as
+simple as possible, each of the built-in library types has a static
+member function called <code>registerlib</code> for this purpose.
+
+<pre class="example">     #include &lt;ringing/xmllib.h&gt;
+     #include &lt;ringing/cclib.h&gt;
+     
+     xmllib::registerlib();
+     cclib::registerlib();
+     
+     // Now we can open XML and Central Council libraries automatically
+</pre>
+   <p>The order in which library types are registered is the order in which
+they will be tried when opening a library.
+
+   </body></html>
+

@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+<title>The printpage class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Producing-printed-output.html#Producing-printed-output" title="Producing printed output">
+<link rel="prev" href="Auxiliary-classes.html#Auxiliary-classes" title="Auxiliary classes">
+<link rel="next" href="The-printrow-class.html#The-printrow-class" title="The printrow class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-printpage-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="The-printrow-class.html#The-printrow-class">The printrow class</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Auxiliary-classes.html#Auxiliary-classes">Auxiliary classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Producing-printed-output.html#Producing-printed-output">Producing printed output</a>
+<hr><br>
+</div>
+
+<h3 class="section">8.2 The <code>printpage</code> class</h3>
+
+<p>The <code>printpage</code> class takes control of producing printed output on
+a page.  To start printing, an object of some subclass of
+<code>printpage</code> is created, which will handle all further printing. 
+For example, to print to a PostScript stream or file, an object of class
+<code>printpage_ps</code> would be created.  Once the <code>printpage</code> class
+has been created, it can be used to place text directly on the page.  It
+can also be used to create <code>printrow</code> objects for printing rows and
+lines.
+
+   <p>Note that positions on the page are always measured from the bottom left
+corner.
+
+   <p>The <code>printpage</code> class is a pure virtual class:  the only way to create
+one is by constructing an object of a derived class.
+
+<div class="defun">
+&mdash; Function: void <b>printpage::new_page</b> (<var>void</var>)<var>;<a name="index-printpage_003a_003anew_005fpage-317"></a></var><br>
+<blockquote><p>This tells the <code>printpage</code> object to finish printing the current
+page and start a new page. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual void <b>printpage::text</b> (<var>const string t, const dimension&amp; x, const dimension&amp; y, text_style::alignment a, const text_style&amp; s</var>)<var>;<a name="index-printpage_003a_003atext-318"></a></var><br>
+<blockquote><p>This function places a text string on the page.  The string is given in
+<var>t</var> and should consist of printable characters.  The position at
+which the string is to be printed, measured from the bottom left corner
+of the page, is given by <var>x</var> and <var>y</var>.  The alignment of the text
+about this point is given by <var>a</var>, and the text style is given by
+<var>s</var>. 
+</p></blockquote></div>
+
+   </body></html>
+

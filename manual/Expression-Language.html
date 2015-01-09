@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+<title>Expression Language - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Music-Regular-Expressions.html#Music-Regular-Expressions" title="Music Regular Expressions">
+<link rel="prev" href="Music-Regular-Expressions.html#Music-Regular-Expressions" title="Music Regular Expressions">
+<link rel="next" href="Music_005fDetails-class.html#Music_005fDetails-class" title="Music_Details class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Expression-Language"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Music_005fDetails-class.html#Music_005fDetails-class">Music_Details class</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Music-Regular-Expressions.html#Music-Regular-Expressions">Music Regular Expressions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Music-Regular-Expressions.html#Music-Regular-Expressions">Music Regular Expressions</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">7.2.1 Music Regular Expression Language</h4>
+
+<p>The regular expression strings describing rows that can be matched as 'musical' can be specified using the following characters:
+
+   <p>Representing a bell:
+
+<pre class="example">     1234567890ETABCDFGHJKLMNPQRSUVWYZ
+</pre>
+   <p>Representing any bell:
+
+<pre class="example">     ?
+</pre>
+   <p>Representing any bells in any order:
+
+<pre class="example">     *
+</pre>
+   <p>Representing one of several bells in a set position:
+
+<pre class="example">     [34]
+</pre>
+   <p>These constructs can be formed into the following (in all these cases we
+are matching with a 6 bell method):
+
+<pre class="example">     "12??56" In this case we are wishing to know how many rows occur that are 124356 or 123456.
+</pre>
+   <pre class="example">     "135246" In this case we are wishing to know how many times queens occur.
+</pre>
+   <pre class="example">     "*456" In this case we wish to know how many rows there are that finish in 456.
+</pre>
+   <pre class="example">     "654*" In this case we wish to know how many rows there are that start with 654.
+</pre>
+   <pre class="example">     "*456*" In this case we wish to know how many rows have 456 in the middle of them, note this includes rows that start 456 and end 456 as well.
+</pre>
+   <pre class="example">     "*[56]78" in this case we wish to know how many rows end in 578 or 678.
+</pre>
+   </body></html>
+

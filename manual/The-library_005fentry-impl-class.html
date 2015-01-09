@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+<title>The library_entry impl class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Library-framework.html#Library-framework" title="Library framework">
+<link rel="prev" href="library_005fentry-internals.html#library_005fentry-internals" title="library_entry internals">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-library_005fentry-impl-class"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="library_005fentry-internals.html#library_005fentry-internals">library_entry internals</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Library-framework.html#Library-framework">Library framework</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.3.5 The <code>library_entry::impl</code> class</h4>
+
+<p><a name="index-_0040code_007blibrary_005fentry_003a_003aimpl_007d-class-226"></a>
+The <code>library_entry::impl</code> class provides the interface that library
+implementations must implement to parse individual library entries.  Each
+<code>library_entry</code> and <code>library::const_iterator</code> holds onto one of
+these.
+
+<div class="defun">
+&mdash; Destructor: virtual <b>library_entry::impl::~impl</b> (<var>void</var>)<var>;<a name="index-library_005fentry_003a_003aimpl_003a_003a_007eimpl-227"></a></var><br>
+<blockquote><p>A virtual destructor. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual library_entry::impl* <b>library_entry::impl::clone</b> (<var>void</var>)<var> const = 0;<a name="index-library_005fentry_003a_003aimpl_003a_003aclone-228"></a></var><br>
+<blockquote><p>This must be overriden to perform a deep copy of the library.  Almost always
+this should be implemented as follows:
+     <pre class="example">          virtual library_entry::impl* mylib::entry_type::clone() const {
+            return new mylib::entry_type(*this);
+          }
+     </pre>
+        </blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual bool <b>library_entry::impl::readentry</b> (<var>library_base&amp; lb</var>)<var> const = 0;<a name="index-library_005fentry_003a_003aimpl_003a_003areadentry-229"></a></var><br>
+<blockquote><p>The function should be overriden to read the next entry from the library and
+return true unless the end of the library has been reached.  The source of the
+data should be held within the <code>library_base</code> implementation, and not
+this class.  For example, if the library implementation reads from a file via
+an <code>ifstream</code>, the <code>library_base</code> class should contain the
+<code>ifstream</code> and this class should access it via <var>lb</var>:
+     <pre class="example">          virtual bool mylib::entry_type::readentry( library_base&amp; lb ) {
+            ifstream&amp; ifs = dynamic_cast&lt; mylib&amp; &gt;( lb ).ifs;
+            std::getline( ifs, this-&gt;entry );
+          }
+     </pre>
+        <p>None of <code>library_entry</code>'s other functions should ever access the parent
+<code>library_base</code> class.
+
+        <p>This function gets called whenever a <code>library::const_iterator</code> is
+constructed or incremented. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual string <b>library_entry::impl::name</b> (<var>void</var>)<var> const = 0;<a name="index-library_005fentry_003a_003aimpl_003a_003aname-230"></a></var><br>
+&mdash; Function: virtual string <b>library_entry::impl::base_name</b> (<var>void</var>)<var> const = 0;<a name="index-library_005fentry_003a_003aimpl_003a_003abase_005fname-231"></a></var><br>
+<blockquote><p>These should be overriden to return the name of the current entry.  The
+<code>name</code> function should return a name which is unique within the library
+(this may require the class name(s) and/or stage name be included);
+the <code>base_name</code> function should return the name without either the
+class or stage name.
+
+        <p>These functions may be implemented to simply return a name that was parsed by
+<code>readentry</code>; alternatively it might be implemented to parse some
+internal representation of the entry (such as a string containing the
+whole entry).  It must not attempt to access the parent <code>library_base</code>
+which may no longer exist.  The <code>readentry</code> function will always have
+been called before this function gets called. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual string <b>library_entry::impl::pn</b> (<var>void</var>)<var> const = 0;<a name="index-library_005fentry_003a_003aimpl_003a_003apn-232"></a></var><br>
+<blockquote><p>This should be overriden to return the place notation of the current method. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual string <b>library_entry::impl::pn</b> (<var>void</var>)<var> const = 0;<a name="index-library_005fentry_003a_003aimpl_003a_003apn-233"></a></var><br>
+<blockquote><p>This should be overriden to return the number of bells that the current method
+is on. 
+</p></blockquote></div>
+
+   </body></html>
+

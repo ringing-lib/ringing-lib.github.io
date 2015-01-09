@@ -1,0 +1,71 @@
+<html lang="en">
+<head>
+<title>Subclassing library_base - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Implementing-new-library-classes.html#Implementing-new-library-classes" title="Implementing new library classes">
+<link rel="prev" href="Alternative-creation-mechanisms.html#Alternative-creation-mechanisms" title="Alternative creation mechanisms">
+<link rel="next" href="Subclassing-library_005fentry-impl.html#Subclassing-library_005fentry-impl" title="Subclassing library_entry impl">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Subclassing-library_005fbase"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Subclassing-library_005fentry-impl.html#Subclassing-library_005fentry-impl">Subclassing library_entry impl</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Alternative-creation-mechanisms.html#Alternative-creation-mechanisms">Alternative creation mechanisms</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Implementing-new-library-classes.html#Implementing-new-library-classes">Implementing new library classes</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.4.3 Subclassing library_base</h4>
+
+<p>In addition to providing mechanism for opening libraries, implementations
+of new library types must also override at least the <code>library_base::good</code>
+and <code>library_base::begin</code> virtual functions.  The implementation of the
+<code>good</code> function is usually trivial, and <code>begin</code> only slightly less
+so.  Continuing with the example used in <a href="Supporting-auto_002ddetection.html#Supporting-auto_002ddetection">Supporting auto-detection</a>, they
+might be as follows:
+
+<pre class="example">     class mylibrary : public library_base {
+       mylibrary(const string &amp;filename) : ifs(filename) {}
+     
+       class entry_type : public library_entry {
+         // ...
+       };
+     
+       const_iterator make_begin() {
+         ifs.clear(); ifs.seekg(0, ios::beg); // Rewind the stream
+         return const_iterator( this, new entry_type );
+       }
+     
+       virtual bool good() const { return ifs; }
+     
+       virtual const_iterator begin() const {
+         return const_cast&lt; mylibrary* &gt;( this )-&gt;make_begin();
+       }
+     
+       ifstream ifs;
+     }
+</pre>
+   <p>Notice the slight awkwardness of the <code>const_cast</code> in <code>begin</code>.  This
+is necessary because the <code>begin</code> function is sematically constant&mdash;it
+does not change the visible state of the library&mdash;but it needs to rewind
+<var>ifs</var>.  The stream's position is not part of the visible state
+of the library because the <code>library::const_iterator</code> is only an
+Input Iterator and so only one of them can ever be present at any time.
+
+   </body></html>
+

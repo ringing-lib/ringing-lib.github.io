@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+<title>Alternative creation mechanisms - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Implementing-new-library-classes.html#Implementing-new-library-classes" title="Implementing new library classes">
+<link rel="prev" href="Supporting-auto_002ddetection.html#Supporting-auto_002ddetection" title="Supporting auto-detection">
+<link rel="next" href="Subclassing-library_005fbase.html#Subclassing-library_005fbase" title="Subclassing library_base">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Alternative-creation-mechanisms"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Subclassing-library_005fbase.html#Subclassing-library_005fbase">Subclassing library_base</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Supporting-auto_002ddetection.html#Supporting-auto_002ddetection">Supporting auto-detection</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Implementing-new-library-classes.html#Implementing-new-library-classes">Implementing new library classes</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.4.2 Alternative creation mechanisms</h4>
+
+<p>In cases where it is inappropriate to use the auto-detection mechanism an
+alternative way of initialising <code>library</code> with a pointer to a subclass of
+<code>library_base</code> must be provided.  To do this, the implementation should
+provide subclasses of both <code>library</code> and <code>library_base</code>.  The
+constructor of the subclass of <code>library</code> should call down to
+protected <code>library::library (library_base* </code><var>lb</var><code>)</code> constrctor with
+a newly allocated subclass of <code>library_base</code>.  For example,
+
+<pre class="example">     class mylibrary : public library {
+     private:
+       class impl : public library_base {
+         // override virtual functions
+       };
+     
+       impl *init_library() {
+         // Do any necessary initialisation
+         return new impl;
+       }
+     
+     public:
+       mylibrary() : library( init_library() ) {}
+     };
+</pre>
+   <p>Usually it is sensible to avoid putting any data members or virtual
+functions in <code>mylibrary</code>, and to put them into <code>mylibrary::impl</code>
+instead.  This means that if a <code>mylibrary</code> class is sliced to a
+<code>library</code> during a copy (for example when passing to a function taking
+a <code>library</code> by value) the class will still work correctly.
+
+   <p>Note that <code>library::~library</code> is <em>not</em> virtual, and thus,
+if <code>mylibrary</code> is ever allocated on the heap, care is required to avoid
+deletion via a pointer to its base class.
+
+   </body></html>
+

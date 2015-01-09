@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+<title>The colour class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Auxiliary-classes.html#Auxiliary-classes" title="Auxiliary classes">
+<link rel="prev" href="The-dimension-class.html#The-dimension-class" title="The dimension class">
+<link rel="next" href="The-text_005fstyle-class.html#The-text_005fstyle-class" title="The text_style class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-colour-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="The-text_005fstyle-class.html#The-text_005fstyle-class">The text_style class</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-dimension-class.html#The-dimension-class">The dimension class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Auxiliary-classes.html#Auxiliary-classes">Auxiliary classes</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">8.1.2 The <code>colour</code> class</h4>
+
+<p>The <code>colour</code> class is a structure which represents a colour.  It
+is defined thus:
+
+<pre class="example">     struct colour { bool grey; float red, green, blue; };
+</pre>
+   <p>The red-green-blue (<acronym>RGB</acronym>) colour space is used to specify
+colours.  This is not particularly well suited to printing, where a
+subtractive colour model such as <acronym>CMYK</acronym> is more useful, but
+<acronym>RGB</acronym> is at least very widely used.  Colours printed using the
+Ringing Class Library will probably vary quite a lot from one device to
+another, but your blue lines will be blue and your red lines will be
+red.
+
+   <p>To specify a colour in a <code>colour</code> object, simply set <code>grey</code> to
+<code>false</code> and set the other three members to numbers between 0 and 1,
+inclusive.  You can also specify a shade of grey by setting <code>grey</code> to
+<code>true</code>; then the <code>red</code> element specifies the shade of grey, from
+0 (black) to 1 (white).
+
+   </body></html>
+

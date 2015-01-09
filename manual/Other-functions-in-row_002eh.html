@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+<title>Other functions in row.h - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Rows-and-changes.html#Rows-and-changes" title="Rows and changes">
+<link rel="prev" href="The-row_005fblock-class.html#The-row_005fblock-class" title="The row_block class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Other-functions-in-row_002eh"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="The-row_005fblock-class.html#The-row_005fblock-class">The row_block class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Rows-and-changes.html#Rows-and-changes">Rows and changes</a>
+<hr><br>
+</div>
+
+<h3 class="section">3.9 Other functions in <span class="file">row.h</span></h3>
+
+<div class="defun">
+&mdash; Function: template&lt;OutputIterator, ForwardIterator&gt; void <b>interpret_pn</b> (<var>int bells, ForwardIterator start, ForwardIterator finish, OutputIterator out</var>)<var>;<a name="index-interpret_005fpn-106"></a></var><br>
+<blockquote><p>This template function is for expanding place notation into changes.  The
+arguments are as follows: <var>bells</var> is the number of bells; <var>start</var> and
+<var>finish</var> should be forward iterators with value type <code>char</code>, and
+indicate a string of characters containing the place notation; and <var>out</var>
+is an output iterator of value type <code>change</code>, to which the changes
+will be written.
+
+        <p>The syntax of the place notation is as follows: place notation consists of
+a sequence of blocks, which are delimited by commas.  Each block is a
+sequence of changes, with <span class="samp">X</span> or <span class="samp">-</span> meaning a cross change. 
+Changes other than cross changes are separated by full stops. 
+A block may optionally be preceded by an ampersand <span class="samp">&amp;</span>, which means
+that the entire block, except the last change, is repeated backwards.  All
+other characters are ignored.
+
+        <p>For examples of this function in use, look at one of the <code>method</code>
+constructors in <span class="file">ringing/method.h</span> or in the example code. 
+</p></blockquote></div>
+
+   </body></html>
+

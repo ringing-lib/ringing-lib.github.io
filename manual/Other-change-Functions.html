@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+<title>Other change Functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-change-Class.html#The-change-Class" title="The change Class">
+<link rel="prev" href="change-Operators.html#change-Operators" title="change Operators">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Other-change-Functions"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="change-Operators.html#change-Operators">change Operators</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-change-Class.html#The-change-Class">The change Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.6.4 Other functions</h4>
+
+<div class="defun">
+&mdash; Function: void <b>change::swap</b> (<var>change&amp; c</var>)<var>;<a name="index-change_003a_003aswap-85"></a></var><br>
+<blockquote><p>This function swaps this change with the change given by <var>c</var> in an
+efficient manner. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>change::bells</b> (<var>void</var>)<var> const;<a name="index-change_003a_003abells-86"></a></var><br>
+<blockquote><p>This returns the number of bells on which the change is defined. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>change::sign</b> (<var>void</var>)<var> const;<a name="index-change_003a_003asign-87"></a></var><br>
+<blockquote><p>This returns the sign of the change: -1 if an odd number of pairs are
+swapped, +1 if an even number of pairs are swapped. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>change::findswap</b> (<var>bell i</var>)<var> const;<a name="index-change_003a_003afindswap-88"></a></var><br>
+<blockquote><p>Returns true if the change swaps bells <var>i</var> and <var>i+1</var>, and false
+otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>change::findplace</b> (<var>bell i</var>)<var> const;<a name="index-change_003a_003afindplace-89"></a></var><br>
+<blockquote><p>Returns true if the change doesn't move the bell in the <var>i</var>th place
+(i.e. if <var>i</var>ths place is made), and false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>change::count_places</b> (<var>void</var>)<var> const;<a name="index-change_003a_003acount_005fplaces-90"></a></var><br>
+<blockquote><p>This function returns the number of places made in the change. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>change::swappair</b> (<var>int i</var>)<var>;<a name="index-change_003a_003aswappair-91"></a></var><br>
+<blockquote><p>If the change doesn't currently swap bells <var>i</var> and <var>i+1</var>, then
+this will add that swap.  If those bells are swapped, this will remove
+the swap.  If the bells <var>i-1</var> and <var>i</var>, or <var>i+1</var> and
+<var>i+2</var>, are currently swapped, those swaps are removed.
+
+        <p>This returns true if after the function call, the pair of bells <var>i</var>
+and <var>i+1</var> are swapped, and false otherwise.  If exceptions are enabled and
+the bell <var>i+1</var> is greater the number of bells in the change, an
+exception of class <code>change::out_of_range</code> will be thrown.
+
+        <p>This function makes it possible for the user to edit changes in such a
+way that they will always end up in a sensible state. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: change <b>change::reverse</b> (<var>void</var>)<var> const;<a name="index-change_003a_003areverse-92"></a></var><br>
+<blockquote><p>This returns the reverse of a change; that is, the change is flipped
+over so that on 8 bells for example, 2nds place becomes 7ths place and
+so on. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>change::internal</b> (<var>void</var>)<var> const;<a name="index-change_003a_003ainternal-93"></a></var><br>
+<blockquote><p>This returns true if the change contains internal places, and false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string <b>change::print</b> (<var>void</var>)<var> const;<a name="index-change_003a_003aprint-94"></a></var><br>
+<blockquote><p>This function prints the place notation for the change to a string. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: template &lt;&gt; void <b>swap&lt;change&gt;</b> (<var>change&amp; a, change&amp; b</var>)<var>;<a name="index-swap_003cchange_003e-95"></a></var><br>
+<blockquote><p>This specialised the <code>swap</code> function which is defined in the
+standard library.  The result is that certain standard algorithms may
+become much more efficient.  Note that according to your namespace
+setup, <code>swap</code> may need to be in namespace <code>std</code>; similarly,
+<code>change</code> may or may not be in namespace <code>ringing</code>.  This is all
+taken care of. 
+</p></blockquote></div>
+
+   </body></html>
+

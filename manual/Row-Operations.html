@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+<title>Row Operations - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Rows-and-changes.html#Rows-and-changes" title="Rows and changes">
+<link rel="prev" href="Rows-and-changes.html#Rows-and-changes" title="Rows and changes">
+<link rel="next" href="Row-Properties.html#Row-Properties" title="Row Properties">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Row-Operations"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Row-Properties.html#Row-Properties">Row Properties</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Rows-and-changes.html#Rows-and-changes">Rows and changes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Rows-and-changes.html#Rows-and-changes">Rows and changes</a>
+<hr><br>
+</div>
+
+<h3 class="section">3.1 Row operations</h3>
+
+<p><a name="index-row-algebra-7"></a><a name="index-algebra-of-rows-8"></a><a name="index-row-operations-9"></a><a name="index-transposition-10"></a>
+Rows have a set of operations which we can use on them; in mathematical
+terms, they form a group. The most important operation is that of row
+multiplication or transposition - in this operation, the bells in one
+row are rearranged according to the order given by another row.
+
+   <p>For example,
+<pre class="example">     21345678 * 13572468 = 23571468
+</pre>
+   <p class="noindent">and
+<pre class="example">     13572468 * 21345678 = 31572468
+</pre>
+   <p>Note that the two above examples do <em>not</em> give the same result;
+that is, the order in which two things are multiplied does matter.
+
+   <p>As an example of how row multiplication is used, suppose that we want to
+know the 4th row of the lead of Plain Bob Major with lead head
+<span class="samp">17856342</span>. The 4th row of the first lead (which has a lead head of
+rounds) is <span class="samp">42618375</span>. Multiplying these together gives us the
+answer we are looking for, namely <span class="samp">57312846</span>.
+
+   <p>The identity for this operation is rounds; in other words, any row
+multiplied by rounds gives itself, and rounds multiplied by any row
+gives that row.
+
+   <p>It is possible to define the inverse of a row as the row which, when
+multiplied by that row, will give rounds. For example, the inverse of
+<span class="samp">13572468</span> is <span class="samp">15263748</span>, as
+<pre class="example">     13572468 * 15263748 = 12345678
+</pre>
+   <p>The opposite of row multiplication is row division. If <span class="samp">a * b = c</span>,
+we can define <span class="samp">c / b = a</span>. Using the same example as above, suppose
+we have a lead of Plain Bob Major and we know that the fourth row is
+<span class="samp">57312846</span>, and we wish to find the lead head. Just divide by the
+fourth row of the plain course (<span class="samp">42618375</span>) to get the answer.
+
+   </body></html>
+

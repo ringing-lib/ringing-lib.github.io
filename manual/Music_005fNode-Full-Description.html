@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+<title>Music_Node Full Description - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="music-node-class-definition.html#music-node-class-definition" title="music node class definition">
+<link rel="prev" href="music-node-class-definition.html#music-node-class-definition" title="music node class definition">
+<link rel="next" href="Music_005fNode-Derivation.html#Music_005fNode-Derivation" title="Music_Node Derivation">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Music_005fNode-Full-Description"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Music_005fNode-Derivation.html#Music_005fNode-Derivation">Music_Node Derivation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="music-node-class-definition.html#music-node-class-definition">music node class definition</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="music-node-class-definition.html#music-node-class-definition">music node class definition</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">7.5.1 Full Description</h4>
+
+<p>Each node in the tree stores the expressions that finish at the node, and pointers to nodes below them, if any have been created. Note, for any node there are a maximum of n pointers, where n is the number of bells, plus one; The extra case in this instance is for a ? or * expression to match any bell.
+
+   <p>When a row is to be matched against the expressions stored, each bell in the row is examined individually. If a pointer to a node for the same number as the current bell exists, the matching passes onto the node pointed at. For all cases, if an 'any' pointer exists, then the matching will be passes onto the any node.
+
+   <p>When the expression matching comes up against a node where an expression is specified to finish at that node, then the counter for matches against the node is incremented. If there are no matches to the current bell, and the any pointer does not exist, then the matching simply finishes and returns back up the tree.
+
+   <p>This is probably better explained by means of an example. Suppose the expression <span class="samp">321654</span> is added to the TopNode. If <span class="samp">+</span> is a node, and <span class="samp">|n</span> is a pointer between the nodes, where n is the number of bell pointed to, then the following tree is formed:
+
+<pre class="example">     TopNode
+     |3
+     +
+     |2
+     +
+     |1
+     +
+     |6
+     +
+     |5
+     +
+     |4
+     + <span class="samp">321654</span> finishes here.
+</pre>
+   <p>When the row <span class="samp">326154</span> is attempted to be matched, the following happens:
+
+<pre class="example">     TopNode -&gt; Pointer to 3 exists, so go to the next node.
+     |3
+     +       -&gt; Pointer to 2 exists, so go to the next node.
+     |2
+     +       -&gt; Pointer to 6 (or to any node) does not exist, so terminate.
+     |1
+</pre>
+   <p>Now suppose <span class="samp">321*</span> and <span class="samp">?2*</span> is added to the list, the following tree is formed:
+
+<pre class="example">                 TopNode
+                    |
+     -------------------------------
+     |3                            |any
+     +                             +
+     |2                            |2
+     +                             + <span class="samp">?2*</span> finishes here.
+     |1
+     + <span class="samp">321*</span> finishes here.
+     |6
+     +
+     |5
+     +
+     |4
+     + <span class="samp">321654</span> finishes here.
+</pre>
+   <p>Now, when the row <span class="samp">321654</span> is put through the matching process, the following happens. Taking first the pointer to bell '3' option of TopNode:
+
+<pre class="example">     TopNode -&gt; Pointer to 3 exists, so go to the next node.
+     |3
+     +       -&gt; Pointer to 2 exists, so go to the next node.
+     |2
+     +       -&gt; Pointer to 1 exists, so go to the next node.
+     |1
+     +       -&gt; <span class="samp">321*</span> finishes here so increment, and then as pointer to 6
+                exists, carry on to the next node.
+     |6
+     +       -&gt; Pointer to 5 exists, so go on.
+     |5
+     +       -&gt; Pointer to 4 exists, so go on.
+     |4
+     +       -&gt; <span class="samp">321654</span> finishes here so increment matches. No further
+                pointers, so go back up the tree checking for <span class="samp">any</span> pointers
+</pre>
+   <p>When the matching gets back to the top of the tree and finds the any pointer in the top node, it will follow it as below:
+
+<pre class="example">     TopNode -&gt; Any pointer exists, so follow it
+     |any
+     +       -&gt; Note, we are now on the second bell of the row, which in our case
+                is <span class="samp">2</span>, pointer exists, so follow it.
+     |2
+     +       -&gt; <span class="samp">?2*</span> finishes here so increment matches.
+</pre>
+   <p>From these examples it can be seen that an optimisation is performed when there is a single <span class="samp">*</span> left, which saves the matching algorithm going through exvery any node.
+
+   </body></html>
+

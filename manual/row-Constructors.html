@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+<title>row Constructors - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-row-Class.html#The-row-Class" title="The row Class">
+<link rel="prev" href="row-Derivation.html#row-Derivation" title="row Derivation">
+<link rel="next" href="row-Operators.html#row-Operators" title="row Operators">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="row-Constructors"></a>Next:&nbsp;<a rel="next" accesskey="n" href="row-Operators.html#row-Operators">row Operators</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="row-Derivation.html#row-Derivation">row Derivation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-row-Class.html#The-row-Class">The row Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.5.2 Constructors</h4>
+
+<div class="defun">
+&mdash; Constructor:  <b>row::row</b> (<var>void</var>)<var>;<a name="index-row_003a_003arow-28"></a></var><br>
+<blockquote><p>This constructs an empty row. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor: explicit <b>row::row</b> (<var>int bells</var>)<var>;<a name="index-row_003a_003arow-29"></a></var><br>
+<blockquote><p>This constructs an empty row, where <var>bells</var> is the number of bells
+which the row is to contain.  Note that it is not initialised to
+anything. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>row::row</b> (<var>const char* s</var>)<var>;<a name="index-row_003a_003arow-30"></a></var><br>
+&mdash; Constructor:  <b>row::row</b> (<var>const string&amp; s</var>)<var>;<a name="index-row_003a_003arow-31"></a></var><br>
+<blockquote><p>This constructs a row from a string, which should be the textual
+representation of the row you wish to construct, for example
+<span class="samp">"135246"</span> or <span class="samp">"2143658709TE"</span>.  If the string does not
+contain a valid row, and if exceptions are enabled, an exception of
+class <code>row::invalid</code> is
+thrown. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>row::row</b> (<var>const row&amp; r</var>)<var>;<a name="index-row_003a_003arow-32"></a></var><br>
+<blockquote><p>This is the copy constructor; it creates a copy of the given row. 
+</p></blockquote></div>
+
+   </body></html>
+

@@ -1,0 +1,82 @@
+<html lang="en">
+<head>
+<title>Microsoft Windows - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Installing-and-using-the-library.html#Installing-and-using-the-library" title="Installing and using the library">
+<link rel="prev" href="Unix_002dlike-systems.html#Unix_002dlike-systems" title="Unix-like systems">
+<link rel="next" href="Testing-the-library.html#Testing-the-library" title="Testing the library">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Microsoft-Windows"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Testing-the-library.html#Testing-the-library">Testing the library</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Unix_002dlike-systems.html#Unix_002dlike-systems">Unix-like systems</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Installing-and-using-the-library.html#Installing-and-using-the-library">Installing and using the library</a>
+<hr><br>
+</div>
+
+<h3 class="section">2.4 Microsoft Windows</h3>
+
+<p>When compiling on Microsoft Windows, the range of different compilers and
+lack of a standard powerful scripting language make it difficult to
+provide a genuinely portable infrastructure to the package.  However, the
+task of compiling and installing the library is not complicated, and easy
+to achieve by hand.  The following steps are necessary:
+     <ul>
+<li>Create the file <span class="file">ringing/common-ac.h</span> by editing
+<span class="file">common-ac.h.in</span> to reflect the characteristics of your C++ compiler;
+
+     <li>Compile all the <span class="file">.cpp</span> source files in the <span class="file">ringing</span>
+subdirectory into a library, which you will probably want to call
+<span class="file">ringing.lib</span>;
+
+     <li>Install the compiled library and the header files in places where
+your compiler and linker will be able to find them;
+
+     <li>Optionally, install and run the tests in the <span class="file">tests</span>
+subdirectory.
+
+     <li>Copy the documentation to somewhere permanent.
+
+     <li>If desired, compile and install the utilities in the <span class="file">apps</span>
+subdirectory. 
+</ul>
+
+   <p>Note that the header files are designed to be included from a
+subdirectory called <span class="file">ringing</span> within your system's collection of
+header files.
+
+   <p>If you wish to compile only the part of the library which is licensed
+for use in commercial programs, make sure you only compile and link
+those files which explicitly state that they are under the Lesser GNU
+Public License <acronym>LGPL</acronym>.  See <a href="Licensing.html#Licensing">Licensing</a>.
+
+   <p>If you are using Microsoft Developer Studio, then you can use the
+supplied workspace file <span class="file">ringing-lib.dsw</span> to accomplish the
+compiling and linking of the library without any effort.  In addition,
+with the Microsoft Visual Studio compiler you do not need to edit
+<span class="file">ringing/common-ac.h</span> by hand: there is a ready-customised version,
+called <span class="file">common-msvc.h</span>, which will be found and used automatically.
+
+   <p>Currently the class library should normally be compiled into a static
+library (<span class="file">.lib</span> file).  It is not yet straightforward to make the
+library into a DLL; if you choose to do this, you are on your own but
+the authors would be please to hear of any success.
+
+   </body></html>
+

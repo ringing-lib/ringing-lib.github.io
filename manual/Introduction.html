@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+<title>Introduction - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="index.html#Top" title="Top">
+<link rel="next" href="Installing-and-using-the-library.html#Installing-and-using-the-library" title="Installing and using the library">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">The Ringing Class Library</h1>
+<div class="node">
+<p>
+<a name="Introduction"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Installing-and-using-the-library.html#Installing-and-using-the-library">Installing and using the library</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="index.html#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">1 Introduction</h2>
+
+<p><a name="index-introduction-1"></a>
+The Ringing Class Library is a collection of C++ classes which implement
+various concepts found in change ringing, and make it possible to
+implement programs which use these concepts without having to write the
+basic algorithms over and over again.
+
+   <p>The library is split into several sections:
+     <ul>
+<li>Classes for dealing with individual rows and changes, and how the
+interact with each other;
+
+     <li>Classes for building and manipulating methods;
+
+     <li>Classes for accessing method libraries;
+
+     <li>Classes for proving and analysing sequences of rows;
+
+     <li>Classes for producing printed output. 
+</ul>
+
+   <p>Thus it is possible to use whatever part of the library is necessary for
+your program; for example, a method editing program would use the method
+classes, whereas a program to simulate call changes would just use the
+row and change classes.
+
+   <p>There are also several utilities included with the library.  These
+demonstrate how to use the Ringing Class Library in your own programs,
+and are useful in their own right.  Currently included are
+<span class="command">gsiril</span>, a peal proving program with an interface similar to
+the popular MicroSIRIL program; <span class="command">psline</span>, a utility to print
+lines for methods in <acronym>PDF</acronym> or PostScript; and
+<span class="command">methsearch</span>, a program which searches for methods satisfying
+various given criteria.  These utilities may be found in the <span class="file">apps</span>
+subdirectory.
+
+   <p>To get information about latest releases of the Ringing Class Library,
+to report bugs, request features, use forums and access the CVS
+repository, visit the project web page at
+<a href="http://ringing-lib.sourceforge.net">http://ringing-lib.sourceforge.net</a>.
+
+   </body></html>
+

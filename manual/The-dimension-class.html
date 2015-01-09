@@ -1,0 +1,141 @@
+<html lang="en">
+<head>
+<title>The dimension class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Auxiliary-classes.html#Auxiliary-classes" title="Auxiliary classes">
+<link rel="prev" href="Auxiliary-classes.html#Auxiliary-classes" title="Auxiliary classes">
+<link rel="next" href="The-colour-class.html#The-colour-class" title="The colour class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-dimension-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="The-colour-class.html#The-colour-class">The colour class</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Auxiliary-classes.html#Auxiliary-classes">Auxiliary classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Auxiliary-classes.html#Auxiliary-classes">Auxiliary classes</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">8.1.1 The <code>dimension</code> class</h4>
+
+<p>The <code>dimension</code> class is used extensively by the printing classes
+to specify physical dimensions on the page.  The class has three public
+data members and one public enumerated type:
+
+<pre class="example">     class dimension {
+     public:
+       enum units {
+         points, inches, cm, mm
+       };
+     
+       int n, d;
+       units u;
+     }
+</pre>
+   <p>The integers <code>n</code> and <code>d</code> hold the numerator and denominator
+respectively of the dimension.  The member <code>u</code> defines which units
+the dimension is given in.  For example, a <code>dimension</code> object
+representing three quarters of an inch would have <code>n</code> equal to 3,
+<code>d</code> equal to 4, and <code>u</code> equal to <code>dimension::inches</code>. 
+Points here are PostScript points, which are equal to 1/72 of an inch.
+
+   <p>The <code>dimension</code> class has several member functions.
+
+<div class="defun">
+&mdash; Constructor:  <b>dimension::dimension</b> (<var>void</var>)<var>;<a name="index-dimension_003a_003adimension-301"></a></var><br>
+<blockquote><p>This constructs a dimension equal to 0. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>dimension::dimension</b> (<var>int i</var>)<var>;<a name="index-dimension_003a_003adimension-302"></a></var><br>
+<blockquote><p>This constructs a dimension equal to <var>i</var> points. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>dimension::dimension</b> (<var>int i, int j, dimension::units u</var>)<var>;<a name="index-dimension_003a_003adimension-303"></a></var><br>
+<blockquote><p>This constructs a dimension equal to the fraction <var>i</var>/<var>j</var> in
+units <var>u</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: dimension <b>dimension::operator-</b> (<var>void</var>)<var><a name="index-dimension_003a_003aoperator_002d-304"></a></var><br>
+<blockquote><p>This operator returns the negation of the dimension. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: dimension&amp; <b>dimension::operator*=</b> (<var>int i</var>)<var><a name="index-dimension_003a_003aoperator_002a_003d-305"></a></var><br>
+&mdash; Operator: dimension <b>dimension::operator*</b> (<var>int i</var>)<var><a name="index-dimension_003a_003aoperator_002a-306"></a></var><br>
+<blockquote><p>These operators multiply the dimension by the integer <var>i</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: dimension&amp; <b>dimension::operator/=</b> (<var>int i</var>)<var><a name="index-dimension_003a_003aoperator_002f_003d-307"></a></var><br>
+&mdash; Operator: dimension <b>dimension::operator/</b> (<var>int i</var>)<var><a name="index-dimension_003a_003aoperator_002f-308"></a></var><br>
+<blockquote><p>These operators divide the dimension by the integer <var>i</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: bool <b>dimension::operator==</b> (<var>int i</var>)<var>;<a name="index-dimension_003a_003aoperator_003d_003d-309"></a></var><br>
+&mdash; Operator: bool <b>dimension::operator!=</b> (<var>int i</var>)<var>;<a name="index-dimension_003a_003aoperator_0021_003d-310"></a></var><br>
+<blockquote><p>These operators are only useful for comparing a dimension to 0. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>dimension::reduce</b> (<var>void</var>)<var>;<a name="index-dimension_003a_003areduce-311"></a></var><br>
+<blockquote><p>This function reduces the fraction <code>n</code>/<code>d</code> to lowest terms. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: float <b>dimension::in_points</b> (<var>void</var>)<var>;<a name="index-dimension_003a_003ain_005fpoints-312"></a></var><br>
+<blockquote><p>This returns a floating point numbers representing the dimension in
+points. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>dimension::set_float</b> (<var>float value, int denom, units uu=points</var>)<var>;<a name="index-dimension_003a_003aset_005ffloat-313"></a></var><br>
+<blockquote><p>This function sets the dimension to an approximation of the given
+floating-point number <var>value</var>.  Specifically, the denominator is set
+to <var>denom</var>, and the numerator is set to the integer closest to
+the product of <var>value</var> and <var>denom</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>dimension::read</b> (<var>const string&amp; s</var>)<var>;<a name="index-dimension_003a_003aread-314"></a></var><br>
+&mdash; Function: void <b>dimension::read</b> (<var>const char* s</var>)<var>;<a name="index-dimension_003a_003aread-315"></a></var><br>
+<blockquote><p>These functions read a dimension from a string.  The string should contain
+following parts:
+          <ul>
+<li>An optional minus sign;
+
+          <li>a number, in either decimal format or as a fraction;
+
+          <li>the units. 
+</ul>
+
+        <p>For example, the following strings would all be recognised: <span class="samp">0.4 cm</span>;
+<span class="samp">1 1/2"</span>, <span class="samp">56 pt</span>.  The allowed unit names are <span class="samp">pt</span>,
+<span class="samp">points</span>, <span class="samp">point</span>, <span class="samp">in</span>, <span class="samp">inch</span>, <span class="samp">inches</span>,
+<span class="samp">"</span>, <span class="samp">cm</span>, <span class="samp">mm</span>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string&amp; <b>dimension::write</b> (<var>string&amp; s</var>)<var>;<a name="index-dimension_003a_003awrite-316"></a></var><br>
+<blockquote><p>This function writes the dimension to the string <var>s</var>. 
+</p></blockquote></div>
+
+   </body></html>
+

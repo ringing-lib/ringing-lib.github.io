@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+<title>proof Functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-proof-class.html#The-proof-class" title="The proof class">
+<link rel="prev" href="proof-Constructors.html#proof-Constructors" title="proof Constructors">
+<link rel="next" href="proof-Operators.html#proof-Operators" title="proof Operators">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="proof-Functions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="proof-Operators.html#proof-Operators">proof Operators</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="proof-Constructors.html#proof-Constructors">proof Constructors</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-proof-class.html#The-proof-class">The proof class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">6.1.3 Functions</h4>
+
+<p>Where the variable <var>qp</var> is passed into a function, if this is set to true, the proof class will only check until the row blocks are found to be false, as soon as this is the case, the function will end and store the true/false result. No details will be stored about what lines the row block failed on.
+
+<div class="defun">
+&mdash; Function: bool <b>proof::prove</b> (<var>RowIterator first, RowIterator last, bool qp = false</var>)<var>;<a name="index-proof_003a_003aprove-241"></a></var><br>
+<blockquote><p>This checks for repeated rows from first to last. Expects up to 1 extent only. Full result is stored in class for later retrieval, but trueness of rows is returned. This function will erase any falseness details stored in the class. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>proof::prove</b> (<var>RowIterator first, RowIterator last, const int max, bool qp = false</var>)<var>;<a name="index-proof_003a_003aprove-242"></a></var><br>
+<blockquote><p>This checks for repeated rows from first to last. Expects up to <var>max</var> extents. Full result is stored in class for later retrieval, but trueness of rows is returned. This function will erase any falseness details stored in the class. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>proof::prove</b> (<var>RowIterator true_first, RowIterator true_last, RowIterator unknown_first, RowIterator unknown_last, bool qp = false</var>)<var>;<a name="index-proof_003a_003aprove-243"></a></var><br>
+<blockquote><p>This function takes two blocks of rows as it parameters. <var>true_first</var> to <var>true_last</var> are assumed to be a block of rows that are true. No trueness checking is performed on these rows. 
+The function looks at rows <var>unknown_first</var> to <var>unknown_last</var> comparing them to the true block, and to the unknown block to see if they are repeated anywhere. 
+The failure information is reset before the analysis takes place, hence any falseness details obtained will be for the new block only. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: bool <b>proof::prove</b> (<var>RowIterator true_first, RowIterator true_last, RowIterator unknown_first, RowIterator unknown_last, const int max, bool qp = false</var>)<var>;<a name="index-proof_003a_003aprove-244"></a></var><br>
+<blockquote><p>This function acts like the previous, except it will expect up to <var>max</var> extents (and hence repititions). 
+</p></blockquote></div>
+
+   </body></html>
+

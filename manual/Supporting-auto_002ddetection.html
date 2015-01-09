@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+<title>Supporting auto-detection - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Implementing-new-library-classes.html#Implementing-new-library-classes" title="Implementing new library classes">
+<link rel="prev" href="Implementing-new-library-classes.html#Implementing-new-library-classes" title="Implementing new library classes">
+<link rel="next" href="Alternative-creation-mechanisms.html#Alternative-creation-mechanisms" title="Alternative creation mechanisms">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Supporting-auto_002ddetection"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Alternative-creation-mechanisms.html#Alternative-creation-mechanisms">Alternative creation mechanisms</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Implementing-new-library-classes.html#Implementing-new-library-classes">Implementing new library classes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Implementing-new-library-classes.html#Implementing-new-library-classes">Implementing new library classes</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.4.1 Supporting auto-detection</h4>
+
+<p>The implementation of a new type of library that can be auto-detected needs to
+register a function with the signature <code>library::init_function</code> with
+<code>library::addtype</code>.  This gets used by the library class when it attempts
+to open a file.  It is often convenient to provide
+the library user with a <code>registerlib</code> function that handles this
+registration.  For example, for a type of library file that always starts
+with the line &ldquo;My Library File&rdquo;, the following might be used.
+
+<pre class="example">     class mylibrary : public library_base {
+     public:
+       // Allow the user to initialise the library
+       static void registerlib(void) {
+         library::addtype(&amp;canread);
+       }
+     
+     private:
+       static library_base *canread(const string&amp; name) {
+         ifstream ifs(name); string first_line;  getline(ifs, first_line);
+         if (first_line == "My Library File") return new mylibrary(name);
+         return NULL;
+       }
+     
+       mylibrary(const string &amp;name);
+     };
+</pre>
+   <p>In addition, the implementation must override the <code>library_base::good</code>
+and <code>library_base::begin</code> virtual functions.  This is discussed elsewhere.
+
+   </body></html>
+

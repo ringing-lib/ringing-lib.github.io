@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+<title>Built-in facets - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Facets.html#Facets" title="Facets">
+<link rel="prev" href="Facets.html#Facets" title="Facets">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Built_002din-facets"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Facets.html#Facets">Facets</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Facets.html#Facets">Facets</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">5.1.4.1 Built-in facets</h5>
+
+<p>Some facets are declared in <span class="file">ringing/peal.h</span>.  These facets are
+available in some of the built-in library types.
+
+     <dl>
+<dt><code>rw_ref</code><dd>This facet, of type <code>string</code>, contains a reference to the method's
+appearance in the <cite>Ringing World</cite>.
+
+     <br><dt><code>first_tower_peal</code><dd>This facet, of type <code>peal</code>, contains the date and place of the
+first tower bell peal in the method.
+
+     <br><dt><code>first_hand_peal</code><dd>This facet, of type <code>peal</code>, contains the date and place of the
+first handbell peal in the method. 
+</dl>
+
+   <p>The last two are of type <code>peal</code>, which is a class also declared in
+<span class="file">ringing/peal.h</span>.  It is a very simple class and defines the
+following functions.
+
+<div class="defun">
+&mdash; Constructor:  <b>peal</b> (<var>void</var>)<var>;<a name="index-peal-160"></a></var><br>
+&mdash; Constructor:  <b>peal</b> (<var>const peal::date&amp; DATE, const string&amp; PLACE</var>)<var>;<a name="index-peal-161"></a></var><br>
+<blockquote><p>These functions construct objects in the obvious way. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: peal::date const&amp; <b>peal::when</b> (<var>void</var>)<var>;<a name="index-peal_003a_003awhen-162"></a></var><br>
+<blockquote><p>This function returns the date of the peal. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string const&amp; <b>peal::where</b> (<var>void</var>)<var>;<a name="index-peal_003a_003awhere-163"></a></var><br>
+<blockquote><p>This function returns the location of the peal. 
+</p></blockquote></div>
+
+   <p>The <code>peal::date</code> type is also very simple.
+
+<pre class="example">     struct peal::date {
+       int day, month, year;
+     };
+</pre>
+   <div class="defun">
+&mdash; Constructor:  <b>peal::date</b> (<var>void</var>)<var>;<a name="index-peal_003a_003adate-164"></a></var><br>
+&mdash; Constructor:  <b>peal::date</b> (<var>int DAY, int MONTH, int YEAR</var>)<var>;<a name="index-peal_003a_003adate-165"></a></var><br>
+<blockquote><p>These functions construct objects in the obvious way. 
+</p></blockquote></div>
+
+   </body></html>
+

@@ -1,0 +1,63 @@
+<html lang="en">
+<head>
+<title>library iteration functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-library-class.html#The-library-class" title="The library class">
+<link rel="prev" href="library-constructors.html#library-constructors" title="library constructors">
+<link rel="next" href="Other-library-functions.html#Other-library-functions" title="Other library functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="library-iteration-functions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Other-library-functions.html#Other-library-functions">Other library functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="library-constructors.html#library-constructors">library constructors</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-library-class.html#The-library-class">The library class</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">5.1.2.3 Iteration functions</h5>
+
+<p>The <code>library</code> class has an associated iterator class.
+
+<div class="defun">
+&mdash; Data type: <b>library::const_iterator;</b><var><a name="index-library_003a_003aconst_005fiterator_003b-144"></a></var><br>
+<blockquote><p>In the language of the Standard Template Library, this is an <dfn>input
+iterator</dfn>.  This means that you may only use it to read methods from the
+library in order, starting at the beginning.  The value type of the
+iterator is <code>library_entry</code> see <a href="The-library_005fentry-class.html#The-library_005fentry-class">The library_entry class</a>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: library::const_iterator <b>library::begin</b> (<var>void</var>)<var> const;<a name="index-library_003a_003abegin-145"></a></var><br>
+&mdash; Function: library::const_iterator <b>library::end</b> (<var>void</var>)<var> const;<a name="index-library_003a_003aend-146"></a></var><br>
+<blockquote><p>These functions return iterators pointing to the beginning and end of
+the library, respectively. 
+</p></blockquote></div>
+
+   <p>This is how these functions may be used to iterate through the library:
+
+<pre class="example">     // Open a library
+     library l("my_library.xml");
+     library::const_iterator i;
+     
+     // Print the base name of each method in it
+     for(i = l.begin(); i != l.end(); ++i)
+       cout &lt;&lt; i-&gt;base_name() &lt;&lt; endl;
+</pre>
+   </body></html>
+

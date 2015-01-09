@@ -1,0 +1,89 @@
+<html lang="en">
+<head>
+<title>Printing to PDF files - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Producing-printed-output.html#Producing-printed-output" title="Producing printed output">
+<link rel="prev" href="Printing-in-PostScript.html#Printing-in-PostScript" title="Printing in PostScript">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Printing-to-PDF-files"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Printing-in-PostScript.html#Printing-in-PostScript">Printing in PostScript</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Producing-printed-output.html#Producing-printed-output">Producing printed output</a>
+<hr><br>
+</div>
+
+<h3 class="section">8.6 Printing to <acronym>PDF</acronym> files</h3>
+
+<p>Subclasses of the <code>printpage</code> and <code>printrow</code> classes are also
+provided for providing output in Adobe Portable Document Format
+(<acronym>PDF</acronym>).  These classes are declared in the <code>print_pdf.h</code>
+header file.
+
+   <p>Some specific issues must be considered when creating <acronym>PDF</acronym>
+files.  Firstly, although the classes support output to an arbitrary
+stream, some care must be taken.  This is because <acronym>PDF</acronym> files
+contain tables which cross-reference different parts of the file; and
+these tables therefore contain byte offsets into the file.  If you use
+the <acronym>PDF</acronym> printing classes to write to a text-mode file on some
+system, such as Microsoft Windows, which convert single line feeds to
+carriage-return and line-feed pairs, then this byte count will be
+incorrect.  The safe way round this is to <strong>always open
+<acronym>PDF</acronym> output streams in binary mode</strong>.
+
+   <p>The second specific issue which arises when creating a <acronym>PDF</acronym>
+file is that of fonts.  In order to position text correctly on the page,
+the class library needs to know the metrics of every character in each
+font used.  As a result, it is only possible to use the standard 14
+<acronym>PDF</acronym> fonts when printing from the Ringing Class Library.  These
+standard fonts are:
+     <ul>
+<li>Courier, Courier-Bold, Courier-Oblique, Courier-BoldOblique
+
+     <li>Helvetica, Helvetica-Bold, Helvetica-Oblique, Helvetica-BoldOblique
+
+     <li>Times-Roman, Times-Bold, Times-Italic, Times-BoldItalic
+
+     <li>Symbol
+
+     <li>ZapfDingbats
+</ul>
+
+   <p>The <code>printpage_pdf</code> class is derived from <code>printpage</code>.  The only
+new functions defined in this class are its two constructors:
+
+<div class="defun">
+&mdash; Constructor:  <b>printpage_pdf::printpage_pdf</b> (<var>ostream&amp; o, const dimension&amp; width, const dimension&amp; height, bool l=false</var>)<var>;<a name="index-printpage_005fpdf_003a_003aprintpage_005fpdf-355"></a></var><br>
+<blockquote><p>This constructor creates an object for writing a <acronym>PDF</acronym> file to the
+output stream <var>o</var>.  The page width and height are set to <var>width</var> and
+<var>height</var> respectively.  If the Boolean parameter <var>l</var> is set,
+the page will be printed in landscape format. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>printpage_pdf::printpage_pdf</b> (<var>ostream&amp; o, bool l=false</var>)<var>;<a name="index-printpage_005fpdf_003a_003aprintpage_005fpdf-356"></a></var><br>
+<blockquote><p>This constructor works as the previous one, but the page size is set to A4. 
+</p></blockquote></div>
+
+   <p>The subclass of <code>printrow</code> for printing to a <acronym>PDF</acronym> file is called
+<code>printrow_pdf</code>; but as an object of this class will always be created
+through the parent <code>printpage</code> object, the programmer should never
+need to deal with the <code>printrow_pdf</code> class.
+
+   </body></html>
+

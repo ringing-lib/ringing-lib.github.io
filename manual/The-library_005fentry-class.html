@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+<title>The library_entry class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Using-libraries.html#Using-libraries" title="Using libraries">
+<link rel="prev" href="The-library-class.html#The-library-class" title="The library class">
+<link rel="next" href="Facets.html#Facets" title="Facets">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-library_005fentry-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Facets.html#Facets">Facets</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-library-class.html#The-library-class">The library class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Using-libraries.html#Using-libraries">Using libraries</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.1.3 The <code>library_entry</code> class</h4>
+
+<p><a name="index-_0040code_007blibrary_005fentry_007d-class-151"></a>
+The <code>library_entry</code> class is the value type of the iterator on a
+library.  It is used to get information about the method from the
+library without constructing a <code>method</code> object.
+
+<div class="defun">
+&mdash; Function: string <b>library_entry::name</b> (<var>void</var>)<var> const;<a name="index-library_005fentry_003a_003aname-152"></a></var><br>
+<blockquote><p>This returns the method's name in whatever form the library stores it
+internally.  Thus it may or may not contain the class name(s) or stage name
+of the method.  In the case of MicroSIRIL libraries, it will not even have
+whitespace in the name. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string <b>library_entry::base_name</b> (<var>void</var>)<var> const;<a name="index-library_005fentry_003a_003abase_005fname-153"></a></var><br>
+<blockquote><p>This returns the base name of the method (i.e. the name with the class name(s)
+and stage name removed).  The value returned is suitable for passing to
+the <code>method</code> constructor. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string <b>library_entry::pn</b> (<var>void</var>)<var> const;<a name="index-library_005fentry_003a_003apn-154"></a></var><br>
+<blockquote><p>This returns a string containing the method's place notation. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>library_entry::bells</b> (<var>void</var>)<var> const;<a name="index-library_005fentry_003a_003abells-155"></a></var><br>
+<blockquote><p>This returns the number of bells on which the method is defined. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: method <b>library_entry::meth</b> (<var>void</var>)<var> const<a name="index-library_005fentry_003a_003ameth-156"></a></var><br>
+<blockquote><p>This constructs and return a <code>method</code> object. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: template &lt;class Facet&gt; bool <b>library_entry::has_facet</b> (<var>Facet const* f = NULL </var>)<var> const;<a name="index-library_005fentry_003a_003ahas_005ffacet-157"></a></var><br>
+<blockquote><p>This function returns <code>true</code> if the method entry contains
+information about the given facet.  Note that just because a method
+library type supports a certain facet, that does not necessarily mean
+that every method in the library actually has that facet.  For example,
+an entry in a Central Council library may not contain any information
+about the first peals in a method; or an entry in an XML library may not
+contain certain elements.
+
+        <p>The contents of the argument <var>f</var> are not used, but this may be used
+to indicate the type of the facet as an alternative to explicit template
+instantiation. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: template &lt;class Facet&gt; typename Facet::type <b>library_entry::get_facet</b> (<var>Facet const* f = NULL </var>)<var> const;<a name="index-library_005fentry_003a_003aget_005ffacet-158"></a></var><br>
+<blockquote><p>This function returns the value of the specified facet of the method
+entry.
+
+        <p>The contents of the argument <var>f</var> are not used, but this may be used
+to indicate the type of the facet as an alternative to explicit template
+instantiation. 
+</p></blockquote></div>
+
+   <p>For more information on facets and an example of how these functions are
+used, see <a href="Facets.html#Facets">Facets</a>.
+
+   </body></html>
+

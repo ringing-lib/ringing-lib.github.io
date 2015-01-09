@@ -1,0 +1,57 @@
+<html lang="en">
+<head>
+<title>The Standard Template Library - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Installing-and-using-the-library.html#Installing-and-using-the-library" title="Installing and using the library">
+<link rel="prev" href="Licensing.html#Licensing" title="Licensing">
+<link rel="next" href="Unix_002dlike-systems.html#Unix_002dlike-systems" title="Unix-like systems">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-Standard-Template-Library"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Unix_002dlike-systems.html#Unix_002dlike-systems">Unix-like systems</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Licensing.html#Licensing">Licensing</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Installing-and-using-the-library.html#Installing-and-using-the-library">Installing and using the library</a>
+<hr><br>
+</div>
+
+<h3 class="section">2.2 The Standard Template Library</h3>
+
+<p><a name="index-Standard-Template-Library-3"></a><a name="index-STL-4"></a>
+Before you can use the Ringing Class Library, you will need to have a
+copy of the Standard Template Library (<acronym>STL</acronym>) which works with
+your compiler. The <acronym>STL</acronym> is a set of templates which define
+containers such as lists and sets, iterators to move through them, and
+various other useful things.  If your compiler complains about not being
+able to find files such as <span class="file">vector.h</span> and <span class="file">list.h</span> then this
+probably means that you don't have the <acronym>STL</acronym> and need to get
+hold of it.
+
+   <p>A suitable version of the <acronym>STL</acronym> is included with most major C++
+compilers.  If you don't have a working version, you may be able to
+download one: in particular, there is a free implementation of the
+<acronym>STL</acronym> available currently at <a href="http://www.sgi.com/tech/stl">http://www.sgi.com/tech/stl</a>. 
+Implementations differ slightly in how the header files are named and
+whether namespaces are used.  If you are compiling the Ringing Class
+Library on a Unix-like platform, the configuration process should take
+care of finding out how your particular implementation works. 
+Otherwise, you will need to edit the file <span class="file">ringing/common.h.in</span>
+before compiling.
+
+   </body></html>
+

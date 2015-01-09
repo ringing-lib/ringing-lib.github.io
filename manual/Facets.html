@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+<title>Facets - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Using-libraries.html#Using-libraries" title="Using libraries">
+<link rel="prev" href="The-library_005fentry-class.html#The-library_005fentry-class" title="The library_entry class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Facets"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="The-library_005fentry-class.html#The-library_005fentry-class">The library_entry class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Using-libraries.html#Using-libraries">Using libraries</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.1.4 Facets</h4>
+
+<p><a name="index-facets-159"></a>
+In addition to usual information such as name, stage and place notation,
+some method collections contain further information.  For example, the
+Central Council method collections contain the date and place of the
+first peal in each method.  To give access to such information, the
+Ringing Class Library has a fully typed system of method <dfn>facets</dfn>.
+
+   <p>A facet is something which has a C++ type, and which may or may not be
+part of an entry in a method library.  A few facets are declared as
+standard; library types are free to declare new facets of their own.
+
+   <p>For example, one of the standard facets is called <code>rw_ref</code> and is
+of type <code>string</code>.  The facet is intended to contain a string citing
+the method's appearance in the <cite>Ringing World</cite>.  The following code
+checks to see whether the first entry in the library <code>l</code> contains
+this information, and if so prints it.
+
+<pre class="example">     library::iterator i = l.begin();
+     if( i-&gt;has_facet&lt; rw_ref &gt;() )
+       cout &lt;&lt; i-&gt;get_facet&lt; rw_ref &gt;();
+</pre>
+   <p>For more information on these functions, see <a href="The-library_005fentry-class.html#The-library_005fentry-class">The library_entry class</a>.
+
+<ul class="menu">
+<li><a accesskey="1" href="Built_002din-facets.html#Built_002din-facets">Built-in facets</a>
+</ul>
+
+   </body></html>
+

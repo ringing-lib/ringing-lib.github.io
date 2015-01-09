@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+<title>change Operators - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-change-Class.html#The-change-Class" title="The change Class">
+<link rel="prev" href="change-Constructors.html#change-Constructors" title="change Constructors">
+<link rel="next" href="Other-change-Functions.html#Other-change-Functions" title="Other change Functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="change-Operators"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Other-change-Functions.html#Other-change-Functions">Other change Functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="change-Constructors.html#change-Constructors">change Constructors</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-change-Class.html#The-change-Class">The change Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.6.3 Operators</h4>
+
+<div class="defun">
+&mdash; Operator: change&amp; <b>change::operator=</b> (<var>const change&amp; c</var>)<var>;<a name="index-change_003a_003aoperator_003d-75"></a></var><br>
+<blockquote><p>This assigns the value of one change to another. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: bool <b>change::operator==</b> (<var>const change&amp; c</var>)<var> const;<a name="index-change_003a_003aoperator_003d_003d-76"></a></var><br>
+&mdash; Operator: bool <b>change::operator!=</b> (<var>const change&amp; c</var>)<var> const;<a name="index-change_003a_003aoperator_0021_003d-77"></a></var><br>
+<blockquote><p>These compare two changes.  Note that to be equal, the changes must be
+defined on the same number of bells; for example, <span class="samp">"12"</span> on 4
+bells is different from <span class="samp">"12"</span> on 6 bells. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: bell&amp; <b>operator*=</b> (<var>bell&amp; b, const change&amp; c</var>)<var>;<a name="index-operator_002a_003d-78"></a></var><br>
+&mdash; Operator: bell <b>operator*</b> (<var>bell b, const change&amp; c</var>)<var>;<a name="index-operator_002a-79"></a></var><br>
+<blockquote><p>These return the effect of applying the change <var>c</var> to the bell
+<var>b</var>. For example, <code>3 * change(4,"34") == 4</code>. This is useful in
+tracing the path of one particular bell through a series of changes. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: ostream&amp; <b>operator&lt;&lt;</b> (<var>ostream&amp; o, const change&amp; c</var>)<var>;<a name="index-operator_003c_003c-80"></a></var><br>
+<blockquote><p>This writes the place notation for the change <var>c</var> to the given
+output stream. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: bool <b>change::operator&lt;</b> (<var>const change&amp; c</var>)<var> const;<a name="index-change_003a_003aoperator_003c-81"></a></var><br>
+&mdash; Operator: bool <b>change::operator&gt;</b> (<var>const change&amp; c</var>)<var> const;<a name="index-change_003a_003aoperator_003e-82"></a></var><br>
+&mdash; Operator: bool <b>change::operator&lt;=</b> (<var>const change&amp; c</var>)<var> const;<a name="index-change_003a_003aoperator_003c_003d-83"></a></var><br>
+&mdash; Operator: bool <b>change::operator&gt;=</b> (<var>const change&amp; c</var>)<var> const;<a name="index-change_003a_003aoperator_003e_003d-84"></a></var><br>
+<blockquote><p>If both changes have the same number of bells, these performs a
+lexicographical comparison on the swaps present in each changes; for
+example <code>change(6, "14")</code> compares less than <code>change(6, "1236")</code>.
+
+        <p>If the two changes have different numbers of bells the one with fewer
+bells compares less than the one with more bells. 
+</p></blockquote></div>
+
+   </body></html>
+

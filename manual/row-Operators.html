@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+<title>row Operators - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-row-Class.html#The-row-Class" title="The row Class">
+<link rel="prev" href="row-Constructors.html#row-Constructors" title="row Constructors">
+<link rel="next" href="Other-row-Functions.html#Other-row-Functions" title="Other row Functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="row-Operators"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Other-row-Functions.html#Other-row-Functions">Other row Functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="row-Constructors.html#row-Constructors">row Constructors</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-row-Class.html#The-row-Class">The row Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.5.3 Operators</h4>
+
+<div class="defun">
+&mdash; Operator: row&amp; <b>row::operator=</b> (<var>const row&amp; r</var>)<var>;<a name="index-row_003a_003aoperator_003d-33"></a></var><br>
+<blockquote><p>This copies one row to another. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: row&amp; <b>row::operator=</b> (<var>const char* s</var>)<var>;<a name="index-row_003a_003aoperator_003d-34"></a></var><br>
+&mdash; Operator: row&amp; <b>row::operator=</b> (<var>const string&amp; s</var>)<var>;<a name="index-row_003a_003aoperator_003d-35"></a></var><br>
+<blockquote><p>This sets the value of a row, given a string. The string <var>s</var> should
+contain a textual representation of a row, such as <span class="samp">21436587</span>.  If
+the string is not valid, a <code>row::invalid</code> exception is thrown. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: bool <b>row::operator==</b> (<var>const row&amp; r</var>)<var> const;<a name="index-row_003a_003aoperator_003d_003d-36"></a></var><br>
+&mdash; Operator: bool <b>row::operator!=</b> (<var>const row&amp; r</var>)<var> const;<a name="index-row_003a_003aoperator_0021_003d-37"></a></var><br>
+<blockquote><p>These compare two rows. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: bell <b>row::operator</b>[] (<var>int i</var>)<var> const;<a name="index-row_003a_003aoperator-38"></a></var><br>
+<blockquote><p>This returns the <var>i</var>th bell in the row.  Note that this is not an
+lvalue, so you cannot assign a value to an individual bell in a row. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: row <b>row::operator*</b> (<var>const row&amp; r</var>)<var> const;<a name="index-row_003a_003aoperator_002a-39"></a></var><br>
+&mdash; Operator: row&amp; <b>row::operator*=</b> (<var>const row&amp; r</var>)<var>;<a name="index-row_003a_003aoperator_002a_003d-40"></a></var><br>
+<blockquote><p>These functions multiply two rows together as explained above.  If the
+rows are not of the same length, the shorter row is considered to be
+first padded out to the length of the longer row by adding the extra
+bells in order at the end. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: row <b>row::operator/</b> (<var>const row&amp; r</var>)<var> const;<a name="index-row_003a_003aoperator_002f-41"></a></var><br>
+&mdash; Operator: row&amp; <b>row::operator/=</b> (<var>const row&amp; r</var>)<var>;<a name="index-row_003a_003aoperator_002f_003d-42"></a></var><br>
+<blockquote><p>These functions divide two rows, as explained above.  If the rows are
+not of the same length, the shorter row is padded as for multiplication. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: row&amp; <b>operator*=</b> (<var>row&amp; r, const change&amp; c</var>)<var>;<a name="index-operator_002a_003d-43"></a></var><br>
+&mdash; Operator: row <b>row::operator*</b> (<var>const change&amp; c</var>)<var> const;<a name="index-row_003a_003aoperator_002a-44"></a></var><br>
+<blockquote><p>These functions apply a change to a row.  If the number of bells <var>c</var>
+differs from the number of bells in <var>r</var>, then <var>c</var> is considered
+to be padded or truncated in the obvious way. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: ostream&amp; <b>operator&lt;&lt;</b> (<var>ostream&amp; o, const row&amp; r</var>)<var>;<a name="index-operator_003c_003c-45"></a></var><br>
+<blockquote><p>This writes the row to the given output stream, in the same format as
+returned by <code>row::print()</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Operator: bool <b>row::operator&lt;</b> (<var>const row&amp; other</var>)<var>;<a name="index-row_003a_003aoperator_003c-46"></a></var><br>
+&mdash; Operator: bool <b>row::operator&gt;</b> (<var>const row&amp; other</var>)<var>;<a name="index-row_003a_003aoperator_003e-47"></a></var><br>
+&mdash; Operator: bool <b>row::operator&lt;=</b> (<var>const row&amp; other</var>)<var>;<a name="index-row_003a_003aoperator_003c_003d-48"></a></var><br>
+&mdash; Operator: bool <b>row::operator&gt;=</b> (<var>const row&amp; other</var>)<var>;<a name="index-row_003a_003aoperator_003e_003d-49"></a></var><br>
+<blockquote><p>These functions perform a lexicographical comparison of the two rows. 
+They are necessary in order that rows may be put into certain containers. 
+</p></blockquote></div>
+
+   </body></html>
+

@@ -1,0 +1,61 @@
+<html lang="en">
+<head>
+<title>Printing whole methods - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Producing-printed-output.html#Producing-printed-output" title="Producing printed output">
+<link rel="prev" href="The-printrow-class.html#The-printrow-class" title="The printrow class">
+<link rel="next" href="Printing-in-PostScript.html#Printing-in-PostScript" title="Printing in PostScript">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Printing-whole-methods"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Printing-in-PostScript.html#Printing-in-PostScript">Printing in PostScript</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-printrow-class.html#The-printrow-class">The printrow class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Producing-printed-output.html#Producing-printed-output">Producing printed output</a>
+<hr><br>
+</div>
+
+<h3 class="section">8.4 Printing whole methods</h3>
+
+<p>It should be reasonably clear how the <code>printrow</code> object might be
+used to print out numbers and lines for a method.  This simple but
+tedious task is automated by the <code>printmethod</code> object.  The
+<code>printmethod</code> object is not designed to be as flexible as the rest
+of the printing mechanism, but rather to accomplish its one aim, that of
+printing out methods, in as simple a way as possible.
+
+   <p>The appearance of the printed method is controlled by setting the public
+data members of the <code>printmethod</code> object.  When all the parameters
+have been set up, the function <code>printmethod::print()</code> is used to
+print the method to a given <code>printpage</code> object.
+
+   <p>The output consists of a series of <dfn>columns</dfn>, each of which contains
+the same number of rows.  When one column is full, a new column is
+started to the right of the last one.  A number of columns, side by
+side, are called a <dfn>column set</dfn>.  When one column set is complete, a
+new column set is started below the last.  Whenever a new column is
+started, the last row of the previous column is duplicated at the top of
+the new column.
+
+<ul class="menu">
+<li><a accesskey="1" href="Method-printing-parameters.html#Method-printing-parameters">Method printing parameters</a>
+<li><a accesskey="2" href="Using-the-printmethod-object.html#Using-the-printmethod-object">Using the printmethod object</a>
+</ul>
+
+   </body></html>
+

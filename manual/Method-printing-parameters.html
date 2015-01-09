@@ -1,0 +1,154 @@
+<html lang="en">
+<head>
+<title>Method printing parameters - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Printing-whole-methods.html#Printing-whole-methods" title="Printing whole methods">
+<link rel="prev" href="Printing-whole-methods.html#Printing-whole-methods" title="Printing whole methods">
+<link rel="next" href="Using-the-printmethod-object.html#Using-the-printmethod-object" title="Using the printmethod object">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Method-printing-parameters"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Using-the-printmethod-object.html#Using-the-printmethod-object">Using the printmethod object</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Printing-whole-methods.html#Printing-whole-methods">Printing whole methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Printing-whole-methods.html#Printing-whole-methods">Printing whole methods</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">8.4.1 Method printing parameters</h4>
+
+<p>The <code>printmethod</code> object has many public data members, which
+control the format of the printed method.  These public data members are
+described here.
+
+<div class="defun">
+&mdash; Variable: printrow::options <b>printmethod::opt</b><var><a name="index-printmethod_003a_003aopt-331"></a></var><br>
+<blockquote><p>This member contains the options which are used to print each separate
+row of the method.  For more information on this object, see <a href="Row-printing-options.html#Row-printing-options">Row printing options</a>.  Note that the <code>miss_numbers</code> flag is overridden
+by the setting of the <code>number_mode</code> member of the
+<code>printmethod</code> object (see below). 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: dimension <b>printmethod::hgap</b><var><a name="index-printmethod_003a_003ahgap-332"></a></var><br>
+&mdash; Variable: dimension <b>printmethod::vgap</b><var><a name="index-printmethod_003a_003avgap-333"></a></var><br>
+<blockquote><p>These two members control the horizontal gap between columns, and the
+vertical gap between column sets, respectively.  For more information on
+the <code>dimension</code> class, see <a href="The-dimension-class.html#The-dimension-class">The dimension class</a>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: int <b>printmethod::total_rows</b><var><a name="index-printmethod_003a_003atotal_005frows-334"></a></var><br>
+<blockquote><p>This integer sets the total number of rows which will be printed.  This
+total does not count those rows which are duplicated because they appear
+at the end of a column. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: int <b>printmethod::rows_per_column</b><var><a name="index-printmethod_003a_003arows_005fper_005fcolumn-335"></a></var><br>
+<blockquote><p>This integer controls the number of rows printed in each column.  In
+fact each column will contain one more than this number of rows, because
+the last row of each column is duplicated at the top of the next column. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: int <b>printmethod::columns_per_set</b><var><a name="index-printmethod_003a_003acolumns_005fper_005fset-336"></a></var><br>
+<blockquote><p>This integer controls the number of columns which appear in each
+horizontal column set, that is, the number of columns across the printed
+output. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: int <b>printmethod::sets_per_page</b><var><a name="index-printmethod_003a_003asets_005fper_005fpage-337"></a></var><br>
+<blockquote><p>This integer controls the number of column sets which appear on each
+page, that is, the number of columns down the printed page.  If the total
+number of columns printed exceeds this numbers, more than one page of
+output will be produced. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: dimension <b>printmethod::xoffset</b><var><a name="index-printmethod_003a_003axoffset-338"></a></var><br>
+&mdash; Variable: dimension <b>printmethod::yoffset</b><var><a name="index-printmethod_003a_003ayoffset-339"></a></var><br>
+<blockquote><p>These two members position the output on the page.  Together, they
+contain the position of the top left bell of the top left column of the
+output. measured from the bottom left hand corner of the page.  For more
+information on the <code>dimension</code> class, see <a href="The-dimension-class.html#The-dimension-class">The dimension class</a>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: list&lt;pair&lt;int, int&gt; &gt; <b>printmethod::rules</b><var><a name="index-printmethod_003a_003arules-340"></a></var><br>
+<blockquote><p>This member controls the printing of horizontal rules in the output. 
+Each entry in the list is a pair (<var>a</var>, <var>b</var>) of integers; this
+entry means that a rule will be drawn after the <var>a</var>th row in each
+lead, and every <var>b</var> rows after that.  For example, the usual setting
+for a treble dodging method would be the pair (4,4), indicating that
+rules should be drawn every four rows, starting with a rule after the
+fourth row.  Similarly the usual setting for Stedman would be the pair
+(3,6). 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: printmethod::number_mode_t <b>printmethod::number_mode</b><var><a name="index-printmethod_003a_003anumber_005fmode-341"></a></var><br>
+<blockquote><p>This member sets the behaviour with regard to missing numbers underneath
+lines.  There are four possible settings, described by an enumerated
+type:
+     <pre class="example">          enum number_mode_t { miss_never, miss_always,
+                                miss_column, miss_lead };
+     </pre>
+        <p>The meaning of these options is as follows:
+
+          <ul>
+<li><code>miss_never</code>: numbers are always drawn;
+<li><code>miss_always</code>: numbers are never drawn when they appear
+underneath a line;
+<li><code>miss_column</code>: numbers are only drawn underneath lines in the
+first and last rows of a column;
+<li><code>miss_lead</code>: numbers are only drawn underneath lines at lead
+heads. 
+</ul>
+        </p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: printmethod::pn_mode_t <b>printmethod::pn_mode</b><var><a name="index-printmethod_003a_003apn_005fmode-342"></a></var><br>
+<blockquote><p>This member controls the printing of place notation next to the method. 
+There are three possible settings, described by an enumerated type:
+     <pre class="example">          enum pn_mode_t { pn_none, pn_first, pn_all };
+     </pre>
+        <p>These options are interpreted as follows:
+
+          <ul>
+<li><code>pn_none</code>: place notation is never printed;
+<li><code>pn_first</code>: place notation is printed to the left of the
+first lead of the method and, if the method is symmetrical about the
+half lead, only the first half of the place notation and the lead end
+are printed;
+<li><code>pn_all</code>: full place notation is printed to the left of every
+lead. 
+</ul>
+        </p></blockquote></div>
+
+<div class="defun">
+&mdash; Variable: int <b>printmethod::placebells</b><var><a name="index-printmethod_003a_003aplacebells-343"></a></var><br>
+<blockquote><p>This integer controls whether place bells are printed, and for which
+bell.  If this member contains an integer greater than or equal to zero,
+then place bells are printed for the corresponding bell.  To suppress
+the printing of place bells, set this member to <code>-1</code>. 
+</p></blockquote></div>
+
+   </body></html>
+

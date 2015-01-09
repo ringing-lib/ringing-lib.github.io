@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+<title>Music_Node Functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="music-node-class-definition.html#music-node-class-definition" title="music node class definition">
+<link rel="prev" href="Music_005fNode-Type-Definitions.html#Music_005fNode-Type-Definitions" title="Music_Node Type Definitions">
+<link rel="next" href="Music_005fNode-Exceptions.html#Music_005fNode-Exceptions" title="Music_Node Exceptions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Music_005fNode-Functions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Music_005fNode-Exceptions.html#Music_005fNode-Exceptions">Music_Node Exceptions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Music_005fNode-Type-Definitions.html#Music_005fNode-Type-Definitions">Music_Node Type Definitions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="music-node-class-definition.html#music-node-class-definition">music node class definition</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">7.5.5 Functions</h4>
+
+<div class="defun">
+&mdash; Function: void <b>set_bells</b> (<var>const unsigned int &amp;b</var>)<var>;<a name="index-set_005fbells-296"></a></var><br>
+<blockquote><p>This function is used to set the number of bells that will be in the rows to be matched against. This provides a way for the algorithms to know when they are finished processing the expressions or row. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>add</b> (<var>const music_details &amp;md, const unsigned int &amp;i, const unsigned int &amp;key, const unsigned int &amp;pos</var>)<var>;<a name="index-add-297"></a></var><br>
+<blockquote><p>This function is used to add the supplied expression (<code>md</code>), to the tree. The location in the expression to look at is supplied by <code>i</code>, the <code>key</code> is the reference number that the <code>music</code> class stores the <code>md</code> expression against, and the <code>pos</code> is the number of bells deep we are in the tree.
+
+        <p>Depending on the item in the expression at index <code>i</code>, the algorithm will do different things, normally, it will call the <code>add_to_subtree(...)</code> function which in turn will usually call this function again; sometimes it will call itself (in the case of a <span class="samp">'*'</span>) to move along the current expression without necessarily adding it to a subtree. Hence, the <code>add(...)</code> function is an iterative one. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>add_to_subtree</b> (<var>const unsigned int &amp;place, const music_details &amp;md, const unsigned int &amp;i, const unsigned int &amp;key, const unsigned int &amp;pos, const bool &amp;process_star</var>)<var>;<a name="index-add_005fto_005fsubtree-298"></a></var><br>
+<blockquote><p>This private function is used to create a branch (if required) and add an expression to a branch of a node. If it cannot allocate memory for the new node, it will either throw a <code>memory_error</code> exception (if enabled), or it will simply return without going any further.
+
+        <p>The <code>place</code> parameter provides the branch number (= bell) to create and add to, the <code>process_star</code> parameter is used to indicate if the number of <span class="samp">*</span>s remaining should be processed or ignored. The rest of the parameters are as for the <code>add(...)</code> function. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>match</b> (<var>const row &amp;r, const unsigned int &amp;pos, vector&lt;music_details&gt; &amp;results, const EStroke &amp;stroke</var>)<var>;<a name="index-match-299"></a></var><br>
+<blockquote><p>This function is iterative and is used to match the expressions stored to a row, <code>r</code>. If a node is found to have an expression ending there, the number of counts for that expression are incremented according to the specified <code>stroke</code>. The <code>pos</code> parameter is used to specify the current position in the row <code>r</code>, and the <code>results</code> parameter is the expressions for which the indexes have previously been stored, and against which the count should be incremented as appropriate. 
+</p></blockquote></div>
+
+   </body></html>
+

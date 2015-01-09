@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+<title>Row printing options - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-printrow-class.html#The-printrow-class" title="The printrow class">
+<link rel="prev" href="Using-the-printrow-class.html#Using-the-printrow-class" title="Using the printrow class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Row-printing-options"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Using-the-printrow-class.html#Using-the-printrow-class">Using the printrow class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-printrow-class.html#The-printrow-class">The printrow class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">8.3.2 Row printing options</h4>
+
+<p>The way in which rows are printed by a <code>printrow</code> object is
+controlled by various options.  These options are given by a
+<code>printrow::options</code> object.
+
+<pre class="example">     struct options {
+       enum o_flags {
+         numbers = 0x01,
+         miss_numbers = 0x02
+       };
+       unsigned int flags;
+       text_style style;
+       dimension xspace, yspace;
+       struct line_style {
+         dimension width;
+         colour col;
+       };
+       map&lt;int, line_style&gt; lines;
+     
+       void defaults(void);
+     };
+</pre>
+   <p>The <code>flags</code> member contains various flags; bit values are given by
+the enumerated type <code>o_flags</code>, and possible values for <code>flags</code>
+can be obtained by logically ORing these values together.  The bits
+are as follows:
+     <ul>
+<li>The <code>options::numbers</code> bit controls whether the actual numbers of the
+rows are printed.  If this bit is not set, only lines will be printed.
+
+     <li>If the <code>options::miss_numbers</code> bit, then any numbers which would
+appear underneath lines are missed out.  An example of this may be seen
+in the <cite>Ringing World</cite> diary, where all rows except lead heads are
+printed with this property. 
+</ul>
+   This option may be changed, with immediate effect, at any point during
+printing.
+
+   <p>The <code>style</code> member controls the style in which the rows are
+printed; for the declaration of the <code>text_style</code> class, see
+<a href="The-text_005fstyle-class.html#The-text_005fstyle-class">The text_style class</a>.  This option may not be changed during printing.
+
+   <p>The <code>xspace</code> and <code>yspace</code> members give the horizontal space
+between numbers in a row, and the vertical space between rows, respectively. 
+For the declaration of the <code>dimension</code> class, see
+<a href="The-dimension-class.html#The-dimension-class">The dimension class</a>.  These options may not be changed during
+printing.
+
+   <p>The <code>lines</code> member controls which &ldquo;blue lines&rdquo; are printed.  Each
+element of the map has an integer, denoting the bell number, and a
+<code>line_style</code> element which defines the style of the line.  The two
+members of <code>line_style</code> are a <code>dimension</code> object, giving the
+width of the line, and a <code>colour</code> object, giving the colour of the
+line.  This option may be changed in between columns, but not in the
+middle of a column.
+
+   <p>For example, suppose that we wish to print rows in 10-point Helvetica, with
+spacing of 12 points horizontally and vertically.  We want to draw a blue
+line half a point thick for the second bell.  The following code sets
+up a <code>printrow::options</code> object to accomplish this:
+
+<pre class="example">     printrow::options o;
+     o.flags = printrow::options::numbers;
+     o.style.size = 100;
+     o.style.font = "Helvetica";
+     o.xspace.n = 12;
+     o.yspace.n = 12;
+     line_style s; s.width.n = 1; s.width.d = 2; s.width.u = dimension::points;
+     s.col.grey = false; s.col.red = 0; s.col.green = 0; s.col.blue = 1.0;
+     o.lines[1] = s;
+</pre>
+   <p>There is one member function of <code>printrow::options</code>.
+
+<div class="defun">
+&mdash; Function: void <b>printrow::options::defaults</b> (<var>void</var>)<var>;<a name="index-printrow_003a_003aoptions_003a_003adefaults-330"></a></var><br>
+<blockquote><p>This function sets up the <code>printrow::options</code> object to the defaults
+as given in the example above. 
+</p></blockquote></div>
+
+   </body></html>
+

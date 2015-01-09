@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+<title>library_entry internals - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Library-framework.html#Library-framework" title="Library framework">
+<link rel="prev" href="library-internals.html#library-internals" title="library internals">
+<link rel="next" href="The-library_005fentry-impl-class.html#The-library_005fentry-impl-class" title="The library_entry impl class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="library_005fentry-internals"></a>Next:&nbsp;<a rel="next" accesskey="n" href="The-library_005fentry-impl-class.html#The-library_005fentry-impl-class">The library_entry impl class</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="library-internals.html#library-internals">library internals</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Library-framework.html#Library-framework">Library framework</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">5.3.4 The <code>library_entry</code> internals</h4>
+
+<p><a name="index-_0040code_007blibrary_005fentry_007d-internals-218"></a>
+The <code>library_entry</code> class holds a pointer to a class derived from
+<code>library_entry::impl</code> which reads data from a particular library entry.
+
+<div class="defun">
+&mdash; Constructor:  <b>library_entry::library_entry</b> (<var>void</var>)<var>;<a name="index-library_005fentry_003a_003alibrary_005fentry-219"></a></var><br>
+<blockquote><p>This constructor initialises the <code>library_entry</code> with a <code>NULL</code>
+<code>library_entry::impl</code> pointer.  It is undefined behaviour to call
+any accessor functions on a default constructed <code>library_entry</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>library_entry::library_entry</b> (<var>library_entry::impl* PIMPL</var>)<var>;<a name="index-library_005fentry_003a_003alibrary_005fentry-220"></a></var><br>
+<blockquote><p>This constructor creates a new object from the given pointer. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string <b>name</b> (<var>void</var>)<var> const;<a name="index-name-221"></a></var><br>
+&mdash; Function: string <b>base_name</b> (<var>void</var>)<var> const;<a name="index-base_005fname-222"></a></var><br>
+&mdash; Function: string <b>pn</b> (<var>void</var>)<var> const;<a name="index-pn-223"></a></var><br>
+&mdash; Function: int <b>bells</b> (<var>void</var>)<var> const;<a name="index-bells-224"></a></var><br>
+&mdash; Function: method <b>meth</b> (<var>void</var>)<var> const<a name="index-meth-225"></a></var><br>
+<blockquote><p>These functions all call the corresponding function on the
+<code>library_entry::impl</code> object. 
+</p></blockquote></div>
+
+   </body></html>
+

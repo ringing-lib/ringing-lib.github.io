@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+<title>The text_style class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Auxiliary-classes.html#Auxiliary-classes" title="Auxiliary classes">
+<link rel="prev" href="The-colour-class.html#The-colour-class" title="The colour class">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-text_005fstyle-class"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="The-colour-class.html#The-colour-class">The colour class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Auxiliary-classes.html#Auxiliary-classes">Auxiliary classes</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">8.1.3 The <code>text_style</code> class</h4>
+
+<p>The <code>text_style</code> class is a structure which represents a text
+style.  It contains a font name, a size in tenths of a point and a
+colour.  It also defines an enumerated type which may be used to
+describe text alignment.
+
+<pre class="example">     struct text_style {
+       string font;
+       int size;
+       colour col;
+       enum alignment { left, right, centre };
+     };
+</pre>
+   <p>Font names are dependent on the output device; as the only output device
+currently supported is a PostScript device, the font name should be a
+PostScript font name such as <span class="samp">Helvetica-Oblique</span> or <span class="samp">Times-Roman</span>.
+
+   </body></html>
+

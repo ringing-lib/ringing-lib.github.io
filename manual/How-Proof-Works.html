@@ -1,0 +1,49 @@
+<html lang="en">
+<head>
+<title>How Proof Works - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-proof-class.html#The-proof-class" title="The proof class">
+<link rel="prev" href="Falseness-Storage.html#Falseness-Storage" title="Falseness Storage">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="How-Proof-Works"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Falseness-Storage.html#Falseness-Storage">Falseness Storage</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-proof-class.html#The-proof-class">The proof class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">6.1.7 How it works</h4>
+
+<p><a name="index-How-proof-works-248"></a>
+There are two ways that the class can prove blocks of rows depending on if the number of rows is less or greater than an extent. In both methods, the procedures are carried through to the end to allow the user to see where the block of rows is false in all places, not just the first.
+
+<h4 class="subsection">6.1.8 Single Extent</h4>
+
+<p>If the single extent version of the function <code>proof::prove</code> is called, then we follow this procedure.
+
+   <p>Here we look at the first row and compare it to the rest. Then we proceed to the second and compare that to the rest (starting from the third, and going to the end). We then continue this until we have completed all the rows. If two rows match the details are stored and the trueness is set to false.
+
+<h4 class="subsection">6.1.9 Multiple Extents</h4>
+
+<p>If the multiple extent version of the function <code>proof::prove</code> is called, then we follow this procedure.
+
+   <p>Now we proceed through the list just once. Each row is put into a multimap, if at any time the amount of rows in this map exceed the maximum number of extents then the details are added into the failed information and the trueness is set to false.
+
+   </body></html>
+

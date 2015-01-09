@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+<title>Other library functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-library-class.html#The-library-class" title="The library class">
+<link rel="prev" href="library-iteration-functions.html#library-iteration-functions" title="library iteration functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Other-library-functions"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="library-iteration-functions.html#library-iteration-functions">library iteration functions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-library-class.html#The-library-class">The library class</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">5.1.2.4 Other functions</h5>
+
+<div class="defun">
+&mdash; Function: bool <b>library::good</b> (<var>void</var>)<var> const;<a name="index-library_003a_003agood-147"></a></var><br>
+<blockquote><p>This function returns true if the library is open and ready to read
+methods, and false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual method <b>library::load</b> (<var>const char* name, int stage</var>)<var> const;<a name="index-library_003a_003aload-148"></a></var><br>
+<blockquote><p>This function loads a method from the library by name.  Note that the
+names under which methods are stored in a library depend entirely on the
+type of library.
+
+        <p>If no such method is found, if exceptions are enabled, an exception of class
+<code>library_base::invalid_name</code> will be thrown; otherwise, the method
+returned will be an empty method with the name <span class="samp">"Not Found"</span>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual int <b>library::dir</b> (<var>list&lt;string&gt;&amp; result</var>)<var> const;<a name="index-library_003a_003adir-149"></a></var><br>
+<blockquote><p>This function returns a list of the names of the methods in the library. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: virtual int <b>library::mdir</b> (<var>list&lt;method&gt;&amp; result</var>)<var> const;<a name="index-library_003a_003amdir-150"></a></var><br>
+<blockquote><p>This function loads all the methods in the library and returns them as a
+list. 
+</p></blockquote></div>
+
+   </body></html>
+

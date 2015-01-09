@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+<title>Using the Music Class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Musical-Analysis.html#Musical-Analysis" title="Musical Analysis">
+<link rel="prev" href="Music-Regular-Expressions.html#Music-Regular-Expressions" title="Music Regular Expressions">
+<link rel="next" href="music-class-definition.html#music-class-definition" title="music class definition">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Using-the-Music-Class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="music-class-definition.html#music-class-definition">music class definition</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Music-Regular-Expressions.html#Music-Regular-Expressions">Music Regular Expressions</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Musical-Analysis.html#Musical-Analysis">Musical Analysis</a>
+<hr><br>
+</div>
+
+<h3 class="section">7.3 Using the Music Class</h3>
+
+<p>The basic process of using the music class is to create it, specify to it the music that you wish to look for in a set of rows, tell it to process the rows and then obtain the results.
+
+   <p>We now describe this in more detail. First create an instance of the music class, specifying to it the number of bells you wish to work with:
+
+<pre class="example">     music mu(5);
+</pre>
+   <p>Now specify the music that you are looking for via the music details class (see <a href="Expression-Language.html#Expression-Language">Expression Language</a> for how to do this). The music class behaves like a <code>vector&lt;music_details&gt;</code> structure so you can access the elements individually before and after. To add a music specification, do something like this:
+
+<pre class="example">     music_details md("*45");
+     mu.push_back(md);
+</pre>
+   <p>If you want, more can be added in the same way or by modifying md and pushing the new structure onto the back of the music list:
+
+<pre class="example">     md.set("*345*");
+     mu.push_back(md);
+</pre>
+   <p>Now you can supply the music class with rows to search against the specified music (note pbdoubles is a vector&lt;row&gt;)
+
+<pre class="example">     mu.process_rows(pbdoubles.begin(), pbdoubles.end());
+</pre>
+   <p>Now you can obtain the results from the music class. You can do this in several ways. The first is to obtain the overall total score, for both strokes, or for one:
+
+<pre class="example">     cout &lt;&lt; "Total Score: " &lt;&lt; mu.get_score() &lt;&lt; endl;
+     cout &lt;&lt; "Total Score (Backstroke): " &lt;&lt; mu.get_score(eBackStroke) &lt;&lt; endl;
+</pre>
+   <p>The second way is to obtain results for individual items:
+
+<pre class="example">     music::const_iterator k;
+     
+     for (k = mu.begin(); k != mu.end(); k++)
+       cout &lt;&lt; "Total for " &lt;&lt; k-&gt;get() &lt;&lt; ": " &lt;&lt; t-&gt;count() &lt;&lt; " : " &lt;&lt; k-&gt;total() &lt;&lt; endl;
+</pre>
+   <p>This produces three columns, the first is the music expression that was searched for, the second is the number of matches, the third is the number of matches based on the score. See the <a href="Music_005fDetails-class.html#Music_005fDetails-class">Music_Details class</a> for more details on these functions.
+
+   </body></html>
+

@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+<title>Printing in PostScript - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Producing-printed-output.html#Producing-printed-output" title="Producing printed output">
+<link rel="prev" href="Printing-whole-methods.html#Printing-whole-methods" title="Printing whole methods">
+<link rel="next" href="Printing-to-PDF-files.html#Printing-to-PDF-files" title="Printing to PDF files">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Printing-in-PostScript"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Printing-to-PDF-files.html#Printing-to-PDF-files">Printing to PDF files</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Printing-whole-methods.html#Printing-whole-methods">Printing whole methods</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Producing-printed-output.html#Producing-printed-output">Producing printed output</a>
+<hr><br>
+</div>
+
+<h3 class="section">8.5 Printing in PostScript</h3>
+
+<p>The Ringing Class Library provides subclasses of the <code>printpage</code> and
+<code>printrow</code> classes for producing output in the PostScript language. 
+These classes are declared in the <span class="file">ringing/print_ps.h</span> header file. 
+The output conforms to the Document Structuring Conventions (<acronym>DSC</acronym>)
+version 3.0 and uses only Level 1 language.
+
+   <p>The <code>printpage_ps</code> class is derived from <code>printpage</code>, and handles
+all output to a PostScript stream.  The new functions in this class are
+constructors and some PostScript-specific operations.
+
+<div class="defun">
+&mdash; Constructor:  <b>printpage_ps::printpage_ps</b> (<var>ostream&amp; o</var>)<var>;<a name="index-printpage_005fps_003a_003aprintpage_005fps-352"></a></var><br>
+<blockquote><p>This creates a new PostScript printing object, which will send its
+output to the stream <var>o</var>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>printpage_ps::printpage_ps</b> (<var>ostream&amp; o, const dimension&amp; page_height</var>)<var>;<a name="index-printpage_005fps_003a_003aprintpage_005fps-353"></a></var><br>
+<blockquote><p>This creates a new PostScript printing object, which will send its output
+to the stream <var>o</var>.  Each page will be printed with landscape orientation;
+because of the way PostScript works, this means that the page height must
+be given. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>printpage_ps::printpage_ps</b> (<var>ostream o, int x0, int y0, int x1, int y1</var>)<var>;<a name="index-printpage_005fps_003a_003aprintpage_005fps-354"></a></var><br>
+<blockquote><p>This creates a new object which will write an Encapsulated PostScript
+(<acronym>EPS</acronym>) file to the stream <var>o</var>.  The bounding box for the
+<acronym>EPS</acronym> file is specified in points by the arguments <var>x0</var>, <var>y0</var>,
+<var>x1</var> and <var>y1</var>.  This bounding box has no effect on where you can
+print things using this object, but other applications manipulating the
+<acronym>EPS</acronym> file may rely on the bounding box in order to work properly. 
+</p></blockquote></div>
+
+   <p>The <code>printrow_ps</code> class is for printing rows to a <code>printpage_ps</code>
+object.  You will probably never have to deal with this class directly, as
+it should be created and dealt with by the interface for the <code>printrow</code>
+class.
+
+   </body></html>
+

@@ -1,0 +1,55 @@
+<html lang="en">
+<head>
+<title>The cclib class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Central-Council-libraries.html#Central-Council-libraries" title="Central Council libraries">
+<link rel="prev" href="Central-Council-libraries.html#Central-Council-libraries" title="Central Council libraries">
+<link rel="next" href="Central-Council-library-facets.html#Central-Council-library-facets" title="Central Council library facets">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-cclib-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Central-Council-library-facets.html#Central-Council-library-facets">Central Council library facets</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Central-Council-libraries.html#Central-Council-libraries">Central Council libraries</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Central-Council-libraries.html#Central-Council-libraries">Central Council libraries</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">5.2.2.1 The <code>cclib</code> class</h5>
+
+<p>The <code>cclib</code> class is derived from the <code>library</code> class.
+
+<pre class="example">     class cclib : public library;
+</pre>
+   <p>There is one constructor.
+
+<div class="defun">
+&mdash; Constructor:  <b>cclib::cclib</b> (<var>const string&amp; filename</var>)<var>;<a name="index-cclib_003a_003acclib-170"></a></var><br>
+<blockquote><p>This function attempts to open the given file as a Central Council method
+library. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: static void <b>cclib::registerlib</b> (<var>void</var>)<var><a name="index-cclib_003a_003aregisterlib-171"></a></var><br>
+<blockquote><p>This function registers the Central Council library type with the
+library auto-detection mechanism.  It will agree to open any file which
+has the correct CC copyright notice in the first line. 
+</p></blockquote></div>
+
+   </body></html>
+

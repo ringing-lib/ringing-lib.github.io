@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+<title>library constructors - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-library-class.html#The-library-class" title="The library class">
+<link rel="prev" href="library-derivation.html#library-derivation" title="library derivation">
+<link rel="next" href="library-iteration-functions.html#library-iteration-functions" title="library iteration functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="library-constructors"></a>Next:&nbsp;<a rel="next" accesskey="n" href="library-iteration-functions.html#library-iteration-functions">library iteration functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="library-derivation.html#library-derivation">library derivation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-library-class.html#The-library-class">The library class</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">5.1.2.2 Constructors</h5>
+
+<div class="defun">
+&mdash; Constructor:  <b>library::library</b> (<var>void</var>)<var>;<a name="index-library_003a_003alibrary-142"></a></var><br>
+<blockquote><p>Constructs an empty (and useless) library object. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>library::library</b> (<var>const string&amp; filename</var>)<var>;<a name="index-library_003a_003alibrary-143"></a></var><br>
+<blockquote><p>This constructor attempts to automatically detect what type of library
+<var>filename</var> is, and create an appropriate <code>library</code> object to
+interpret it.   For a library type to be correctly auto-detected, that
+type must be registered see <a href="Initialisation-for-libraries.html#Initialisation-for-libraries">Initialisation for libraries</a>.
+
+        <p>After constructing a library, the <code>library::good</code> function can be
+used to see whether auto-detection succeeded. 
+</p></blockquote></div>
+
+   <p>In addition to this constructor, which auto-detects the type of library,
+it is also possible to open a library of a fixed type, by constructing
+an object for a specific library type.  See <a href="Built_002din-library-types.html#Built_002din-library-types">Built-in library types</a>.
+
+   </body></html>
+

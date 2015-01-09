@@ -1,0 +1,62 @@
+<html lang="en">
+<head>
+<title>Unix-like systems - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Installing-and-using-the-library.html#Installing-and-using-the-library" title="Installing and using the library">
+<link rel="prev" href="The-Standard-Template-Library.html#The-Standard-Template-Library" title="The Standard Template Library">
+<link rel="next" href="Microsoft-Windows.html#Microsoft-Windows" title="Microsoft Windows">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Unix_002dlike-systems"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Microsoft-Windows.html#Microsoft-Windows">Microsoft Windows</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-Standard-Template-Library.html#The-Standard-Template-Library">The Standard Template Library</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Installing-and-using-the-library.html#Installing-and-using-the-library">Installing and using the library</a>
+<hr><br>
+</div>
+
+<h3 class="section">2.3 Unix-like systems</h3>
+
+<p>The Ringing Class Library package uses the GNU tool <span class="command">autoconf</span>
+to take away the problems of coping with differences between platforms. 
+This means that you should be able to change to the top-level directory
+of the source distribution and type
+<pre class="example">     ./configure
+</pre>
+   <p class="noindent">to configure the package.  This will determine the characteristics of
+your C++ compiler and create a file <span class="file">ringing/common.h</span> which defines
+various symbols used in the compilation.  This file is also installed
+with the rest of the class library, so that the installed header files
+will have access to it.
+
+   <p>You can control many aspects of how the package is compiled and installed
+by passing arguments to the <span class="command">configure</span> script; for example, you
+can control where the library is installed (for example, in <span class="file">/usr/lib</span>
+or <span class="file">/usr/local/lib</span>).  For details of all the options which are
+accepted, type
+<pre class="example">     ./configure --help
+</pre>
+   <p class="noindent">in the top-level directory of the distribution.  Some more instructions
+for using the <span class="command">configure</span> script are given in the file
+<span class="file">INSTALL</span>.
+
+   <p>On most platforms, it should be possible to build and install either
+static or dynamic libraries, or both.
+
+   </body></html>
+

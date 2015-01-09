@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+<title>Methods - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Rows-and-changes.html#Rows-and-changes" title="Rows and changes">
+<link rel="next" href="Method-libraries.html#Method-libraries" title="Method libraries">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Methods"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Method-libraries.html#Method-libraries">Method libraries</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Rows-and-changes.html#Rows-and-changes">Rows and changes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">4 Method classes</h2>
+
+<p><a name="index-method-107"></a>
+The Ringing Class Library provides many useful functions for dealing with
+methods, finding information about them and classifying them.
+
+   <p>A <dfn>method</dfn> consists of one block of changes which is repeated over
+and over again; this is called a <dfn>lead</dfn>.  If, at the end of one
+lead, every bell is in a different position, then the method is called a
+<dfn>principle</dfn> and the leads are called <dfn>divisions</dfn>.  Any bells is
+a method which end up in the same place at the end of a lead are called
+<dfn>hunt bells</dfn>.
+
+   <p>The Ringing Class Library defines an object <code>method</code> which is
+simply a block of changes (it is derived from <code>vector&lt;change&gt;</code>) and
+which provides a large range of member functions.  Many of these are
+used for finding out things about the method, such as the number of
+leads in the plain course, the type of method, the full name and so on.
+
+<ul class="menu">
+<li><a accesskey="1" href="The-method-Class.html#The-method-Class">The method Class</a>
+</ul>
+
+   </body></html>
+

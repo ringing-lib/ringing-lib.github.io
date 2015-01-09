@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+<title>Using the printrow class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-printrow-class.html#The-printrow-class" title="The printrow class">
+<link rel="prev" href="The-printrow-class.html#The-printrow-class" title="The printrow class">
+<link rel="next" href="Row-printing-options.html#Row-printing-options" title="Row printing options">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Using-the-printrow-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Row-printing-options.html#Row-printing-options">Row printing options</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="The-printrow-class.html#The-printrow-class">The printrow class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-printrow-class.html#The-printrow-class">The printrow class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">8.3.1 Using the <code>printrow</code> class</h4>
+
+<p>A <code>printrow</code> object is created by one of the following constructors. 
+Note that there are certain options which cannot be changed once the
+object has been created, so unless the default options are going to be
+used it is necessary to use the second form of the constructor.
+
+<div class="defun">
+&mdash; Constructor:  <b>printrow::printrow</b> (<var>const printpage&amp; pp</var>)<var>;<a name="index-printrow_003a_003aprintrow-319"></a></var><br>
+<blockquote><p>This constructor builds a <code>printrow</code> object associated to the
+<code>printpage</code> object given by <var>pp</var>.  The options are initialised
+to the default options. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Constructor:  <b>printrow::printrow</b> (<var>const printpage&amp; pp, const printrow::options&amp; op</var>)<var>;<a name="index-printrow_003a_003aprintrow-320"></a></var><br>
+<blockquote><p>This constructor builds a <code>printrow</code> object associated to the
+<code>printpage</code> object given by <var>pp</var>, and initialised the options
+to <var>op</var>. 
+</p></blockquote></div>
+
+   <p>Once the <code>printrow</code> object has been created, it must be positioned
+on the page before any rows can be printed.
+
+<div class="defun">
+&mdash; Function: void <b>printrow::set_position</b> (<var>const dimension&amp; x, const dimension&amp; y</var>)<var>;<a name="index-printrow_003a_003aset_005fposition-321"></a></var><br>
+<blockquote><p>This function sets the position of the <code>printrow</code> object to the given
+place on the page, measured from the bottom left.  The position given is
+where the first bell of the next row printed will appear. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>printrow::move_position</b> (<var>const dimension&amp; x, const dimension&amp; y</var>)<var>;<a name="index-printrow_003a_003amove_005fposition-322"></a></var><br>
+<blockquote><p>This function is like the preceding one, but the position given by <var>x</var>
+and <var>y</var> are taken relative to the current position of the <code>printrow</code>
+object.  The current position is either the place where the top left bell of
+the last column printed appeared, or as set by a <code>set_position</code> or
+<code>move_position</code> function call, whichever is more recent. 
+</p></blockquote></div>
+
+   <p>Certain options (see <a href="Row-printing-options.html#Row-printing-options">Row printing options</a>) may be changed while the
+<code>printrow</code> object exists.
+
+<div class="defun">
+&mdash; Function: const printrow::options&amp; <b>printrow::get_options</b> (<var>void</var>)<var>;<a name="index-printrow_003a_003aget_005foptions-323"></a></var><br>
+<blockquote><p>This function returns the current options. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>printrow::set_options</b> (<var>const printrow::options&amp; o</var>)<var>;<a name="index-printrow_003a_003aset_005foptions-324"></a></var><br>
+<blockquote><p>This function sets the options to those given by <var>o</var>.  Note that
+only certain option changes will have any effect once the object has
+been constructed. 
+</p></blockquote></div>
+
+   <p>After setting the position, rows can be printed.
+
+<div class="defun">
+&mdash; Operator: printrow&amp; <b>printrow::operator&lt;&lt;</b> (<var>const printrow&amp; pr, const row&amp; r</var>)<var>;<a name="index-printrow_003a_003aoperator_003c_003c-325"></a></var><br>
+<blockquote><p>This operator is used to print a row <var>r</var> using the <code>printrow</code>
+object <var>pr</var>.  This prints the numbers of the row if the <code>numbers</code>
+flag of the options is set, and also draws the lines for any bells which
+have been specified in the options.  The row is printed underneath the
+previous row. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>printrow::rule</b> (<var>void</var>)<var>;<a name="index-printrow_003a_003arule-326"></a></var><br>
+<blockquote><p>This function draws a horizontal rule below the last row printed. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>printrow::dot</b> (<var>int i</var>)<var>;<a name="index-printrow_003a_003adot-327"></a></var><br>
+<blockquote><p>This function draws a small dot at the place where bell <var>i</var> was in the
+last row printed.  If <var>i</var> is -1, prints dots for all bells which are
+having lines drawn. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>printrow::placebell</b> (<var>int i</var>)<var>;<a name="index-printrow_003a_003aplacebell-328"></a></var><br>
+<blockquote><p>This function finds what place the bell <var>i</var> was at in the last row
+printed, and then prints this number in a circle to the right of that row. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>printrow::text</b> (<var>const string&amp; t, const dimension&amp; x, text_style::alignment al, bool between, bool right</var>)<var>;<a name="index-printrow_003a_003atext-329"></a></var><br>
+<blockquote><p>This function prints some text to one side of the last row printed.  The
+text is given in <var>t</var> and is printed in the same style as the rows. 
+If the boolean argument <var>right</var> is true, the text is printed to the
+right of the row; otherwise the text is printed to the left of the row. 
+The dimension <var>x</var> is a distance from the leftmost or rightmost
+number in the row, and the text is aligned about this point as given by
+<var>al</var> (see <a href="The-text_005fstyle-class.html#The-text_005fstyle-class">The text_style class</a>).  If the argument <var>between</var>
+is true, then the text is not aligned vertically with the previous row,
+but rather appears halfway between the previous row and the next one to
+be printed.  This last option is useful, for example, for printing place
+notation beside a method. 
+</p></blockquote></div>
+
+   </body></html>
+

@@ -1,0 +1,56 @@
+<html lang="en">
+<head>
+<title>Music_Node Type Definitions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="music-node-class-definition.html#music-node-class-definition" title="music node class definition">
+<link rel="prev" href="Music_005fNode-Constructors-and-Destructors.html#Music_005fNode-Constructors-and-Destructors" title="Music_Node Constructors and Destructors">
+<link rel="next" href="Music_005fNode-Functions.html#Music_005fNode-Functions" title="Music_Node Functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Music_005fNode-Type-Definitions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Music_005fNode-Functions.html#Music_005fNode-Functions">Music_Node Functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Music_005fNode-Constructors-and-Destructors.html#Music_005fNode-Constructors-and-Destructors">Music_Node Constructors and Destructors</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="music-node-class-definition.html#music-node-class-definition">music node class definition</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">7.5.4 Type Definitions</h4>
+
+<div class="defun">
+&mdash; typedef: map&lt;unsigned <b>int</b><var>, music_node*&gt; BellNodeMap;<a name="index-int-292"></a></var><br>
+<blockquote><p>This map is used to form the structure of the tree. The branches are stored in the structure, with the unsigned int being an index by bell number. Index 0 is for matching any bell. Note, where a node of the tree has no branches coming off of it (because it is the end, or there is nothing else to match against) the map will be empty. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; typedef: BellNodeMap::iterator <b>BellNodeMapIterator;</b><var><a name="index-BellNodeMapIterator_003b-293"></a></var><br>
+<blockquote><p>This type definition is used to provide a shorter type name to iterate the map described above. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; typedef: vector&lt;unsigned <b>int&gt;</b><var> DetailsVector;<a name="index-int_003e-294"></a></var><br>
+<blockquote><p>This type definition defines the vector that is used to store the id of the music_details expressions that end at this node. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; typedef: DetailsVector::iterator <b>DetailsVectorIterator;</b><var><a name="index-DetailsVectorIterator_003b-295"></a></var><br>
+<blockquote><p>This type definition is used to provide a shorter type name to iterate the details vector defined above. 
+</p></blockquote></div>
+
+   </body></html>
+

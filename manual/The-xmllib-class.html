@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+<title>The xmllib class - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="XML-libraries.html#XML-libraries" title="XML libraries">
+<link rel="prev" href="XML-libraries.html#XML-libraries" title="XML libraries">
+<link rel="next" href="XML-library-facets.html#XML-library-facets" title="XML library facets">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="The-xmllib-class"></a>Next:&nbsp;<a rel="next" accesskey="n" href="XML-library-facets.html#XML-library-facets">XML library facets</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="XML-libraries.html#XML-libraries">XML libraries</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="XML-libraries.html#XML-libraries">XML libraries</a>
+<hr><br>
+</div>
+
+<h5 class="subsubsection">5.2.1.1 The <code>xmllib</code> class</h5>
+
+<p><a name="index-_0040code_007bxmllib_007d-class-167"></a>
+The <code>xmllib</code> class is derived from the <code>library</code> class.
+
+<pre class="example">     class xmllib : public library;
+</pre>
+   <div class="defun">
+&mdash; Constructor:  <b>xmllib::xmllib</b> (<var>xmllib::file_arg_type TYPE, const string&amp; NAME</var>)<var>;<a name="index-xmllib_003a_003axmllib-168"></a></var><br>
+<blockquote><p>This constructor opens an XML library.  The first argument <var>TYPE</var>
+describes what sort of resource is to be opened, and should be one of
+the following:
+
+          <dl>
+<dt><code>xmllib::filename</code><dd>Open a file; <var>NAME</var> contains the name of the file.
+
+          <br><dt><code>xmllib::url</code><dd>Open a URL; <var>NAME</var> contains the URL.  To use this, Xerces must have
+been built with Internet access.
+
+          <br><dt><code>xmllib::default_url</code><dd>Query the online method database at <a href="http://methods.ringing.org/">http://methods.ringing.org/</a>. 
+The argument <var>NAME</var> contains the query string, that is, the part of
+the URL after the <span class="samp">?</span> character.  For information on what this
+should contain, see the detailed information on the database's web site. 
+</dl>
+        </p></blockquote></div>
+
+<pre class="example">     // Query the database for all methods named Lincolnshire
+     xmllib l(xmllib::default_url, "name=Lincolnshire");
+</pre>
+   <p>An XML method collection in a file may also be opened using the library
+auto-detection mechanism, by simply constructing a <code>library</code>
+object.  See <a href="library-constructors.html#library-constructors">library constructors</a>.
+
+<div class="defun">
+&mdash; Function: static void <b>xmllib::registerlib</b> (<var>void</var>)<var><a name="index-xmllib_003a_003aregisterlib-169"></a></var><br>
+<blockquote><p>This function registers the XML library type with the library
+auto-detection mechanism. 
+</p></blockquote></div>
+
+   </body></html>
+

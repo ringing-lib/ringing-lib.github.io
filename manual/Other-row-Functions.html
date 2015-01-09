@@ -1,0 +1,112 @@
+<html lang="en">
+<head>
+<title>Other row Functions - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="The-row-Class.html#The-row-Class" title="The row Class">
+<link rel="prev" href="row-Operators.html#row-Operators" title="row Operators">
+<link rel="next" href="row-static-Functions.html#row-static-Functions" title="row static Functions">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Other-row-Functions"></a>Next:&nbsp;<a rel="next" accesskey="n" href="row-static-Functions.html#row-static-Functions">row static Functions</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="row-Operators.html#row-Operators">row Operators</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="The-row-Class.html#The-row-Class">The row Class</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">3.5.4 Other functions</h4>
+
+<div class="defun">
+&mdash; Function: int <b>row::bells</b> (<var>void</var>)<var> const;<a name="index-row_003a_003abells-50"></a></var><br>
+<blockquote><p>This returns the number of bells which the row contains. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>row::swap</b> (<var>row&amp; other</var>)<var>;<a name="index-row_003a_003aswap-51"></a></var><br>
+<blockquote><p>This function swaps this row with <var>other</var> in an efficient manner. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>row::find</b> (<var>bell const&amp; b</var>)<var>;<a name="index-row_003a_003afind-52"></a></var><br>
+<blockquote><p>This function locates the bell, <var>b</var>, in this row and returns its
+place. 
+</p></blockquote></div>
+
+<!-- Silly bit to get round a bug -->
+<div class="defun">
+&mdash; Function: bool <b>row::isrounds</b> (<var>void</var>)<var> const;<a name="index-row_003a_003aisrounds-53"></a></var><br>
+<blockquote><p>This returns true if the row is rounds, and false otherwise. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>row::ispblh</b> (<var>void</var>)<var> const;<a name="index-row_003a_003aispblh-54"></a></var><br>
+<blockquote><p>If the row is a lead head of Plain Bob, Grandsire or, more generally, of
+the Plain Bob type method with any number of hunt bells, then this
+function returns an integer indicating which lead head it is. 
+Otherwise, it returns 0. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>row::ispblh</b> (<var>int h</var>)<var> const;<a name="index-row_003a_003aispblh-55"></a></var><br>
+<blockquote><p>If the row is a lead head of Plain Bob, Grandsire or, more generally, of
+the Plain Bob type method with <var>h</var> hunt bells, then this
+function returns an integer indicating which lead head it is. 
+Otherwise, it returns 0. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string <b>row::print</b> (<var>void</var>)<var> const;<a name="index-row_003a_003aprint-56"></a></var><br>
+<blockquote><p>This prints the row to a string object. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: row <b>row::inverse</b> (<var>void</var>)<var> const;<a name="index-row_003a_003ainverse-57"></a></var><br>
+<blockquote><p>This returns the inverse of a row, as explained above. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>row::sign</b> (<var>void</var>)<var> const;<a name="index-row_003a_003asign-58"></a></var><br>
+<blockquote><p>This returns the sign or parity of a row:  1 for even, -1 for odd. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: int <b>row::order</b> (<var>void</var>)<var> const;<a name="index-row_003a_003aorder-59"></a></var><br>
+<blockquote><p>This returns the order of the row. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: string <b>row::cycles</b> (<var>void</var>)<var> const;<a name="index-row_003a_003acycles-60"></a></var><br>
+<blockquote><p>This expresses the row as separate cycles. The returned string will
+afterwards contain a list of all the cycles in the row, separated by
+commas; for example <code>row("21453678").cycles()</code> will return the
+string <code>"12,345,6,7,8"</code>. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: template &lt;&gt; void <b>swap&lt;row&gt;</b> (<var>row&amp; a, row&amp; b</var>)<var>;<a name="index-swap_003crow_003e-61"></a></var><br>
+<blockquote><p>This specialised the <code>swap</code> function which is defined in the
+standard library.  The result is that certain standard algorithms may
+become much more efficient.  Note that according to your namespace
+setup, <code>swap</code> may need to be in namespace <code>std</code>; similarly,
+<code>row</code> may or may not be in namespace <code>ringing</code>.  This is all
+taken care of. 
+</p></blockquote></div>
+
+   </body></html>
+

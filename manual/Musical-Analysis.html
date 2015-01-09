@@ -1,0 +1,60 @@
+<html lang="en">
+<head>
+<title>Musical Analysis - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Proof.html#Proof" title="Proof">
+<link rel="next" href="Producing-printed-output.html#Producing-printed-output" title="Producing printed output">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Musical-Analysis"></a>Next:&nbsp;<a rel="next" accesskey="n" href="Producing-printed-output.html#Producing-printed-output">Producing printed output</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Proof.html#Proof">Proof</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr><br>
+</div>
+
+<h2 class="chapter">7 Analysis of Music</h2>
+
+<p><a name="index-Music-Analysis-249"></a><a name="index-music-class-250"></a>
+The music class provides analysis for music within a set of rows. The
+class has been designed around providing a regular-expression style
+matching algorithm. This provides flexibility in the way the user can
+enter their own music. Additionally, for each 'regular-expression' a
+score can be allocated. For a full description of the regular
+expressions the ringing library currently provides see Music Regular
+Expressions.
+
+   <p>The music class processes each row just once, it does not store any
+rows. It assumes that the first row given is a handstroke row. The class
+should be able to handle any number of bells that the row class can. Note,
+that matches for complete rows should be done on a same number of bells basis.
+
+   <p>Each time the analysis function is called, the results stored in the
+class are reset to zero, and then incremented based on the rows given.
+
+<ul class="menu">
+<li><a accesskey="1" href="Stroke-Enumeration.html#Stroke-Enumeration">Stroke Enumeration</a>
+<li><a accesskey="2" href="Music-Regular-Expressions.html#Music-Regular-Expressions">Music Regular Expressions</a>
+<li><a accesskey="3" href="Using-the-Music-Class.html#Using-the-Music-Class">Using the Music Class</a>
+<li><a accesskey="4" href="music-class-definition.html#music-class-definition">music class definition</a>
+<li><a accesskey="5" href="music-node-class-definition.html#music-node-class-definition">music node class definition</a>
+</ul>
+
+   </body></html>
+

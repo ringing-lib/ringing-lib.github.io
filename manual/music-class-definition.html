@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+<title>music class definition - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Musical-Analysis.html#Musical-Analysis" title="Musical Analysis">
+<link rel="prev" href="Using-the-Music-Class.html#Using-the-Music-Class" title="Using the Music Class">
+<link rel="next" href="music-node-class-definition.html#music-node-class-definition" title="music node class definition">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="music-class-definition"></a>Next:&nbsp;<a rel="next" accesskey="n" href="music-node-class-definition.html#music-node-class-definition">music node class definition</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Using-the-Music-Class.html#Using-the-Music-Class">Using the Music Class</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Musical-Analysis.html#Musical-Analysis">Musical Analysis</a>
+<hr><br>
+</div>
+
+<h3 class="section">7.4 Music Class definition</h3>
+
+<p><a name="index-music-class-271"></a>
+The <code>music</code> class is the main control of the music classes; it stores <code>music_details</code> objects to match music against and controls the construction of the <code>music_node</code> tree (see <a href="music-node-class-definition.html#music-node-class-definition">music node class definition</a>.
+
+   <p>The class must know the number of bells in the rows that are to be examined before the <code>music_class</code> objects are passed to it; this allows it to create trees of the correct depth and structure to store the regular expressions in search format.
+
+   <p>The <code>music_detail</code> objects are stored in a <code>vector&lt;music_details&gt;</code> structure, this is accessible via the functions provided (detailed below).
+
+<ul class="menu">
+<li><a accesskey="1" href="Music-Derivation.html#Music-Derivation">Music Derivation</a>
+<li><a accesskey="2" href="Music-Constructors.html#Music-Constructors">Music Constructors</a>
+<li><a accesskey="3" href="Music-Type-Definitions.html#Music-Type-Definitions">Music Type Definitions</a>
+<li><a accesskey="4" href="Music-Functions.html#Music-Functions">Music Functions</a>
+</ul>
+
+   </body></html>
+

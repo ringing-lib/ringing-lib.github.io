@@ -1,0 +1,119 @@
+<html lang="en">
+<head>
+<title>Using the printmethod object - The Ringing Class Library</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="The Ringing Class Library">
+<meta name="generator" content="makeinfo 4.7">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Printing-whole-methods.html#Printing-whole-methods" title="Printing whole methods">
+<link rel="prev" href="Method-printing-parameters.html#Method-printing-parameters" title="Method printing parameters">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc { font-variant:small-caps }
+  span.roman { font-family: serif; font-weight: normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<p>
+<a name="Using-the-printmethod-object"></a>Previous:&nbsp;<a rel="previous" accesskey="p" href="Method-printing-parameters.html#Method-printing-parameters">Method printing parameters</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Printing-whole-methods.html#Printing-whole-methods">Printing whole methods</a>
+<hr><br>
+</div>
+
+<h4 class="subsection">8.4.2 Using the <code>printmethod</code> object</h4>
+
+<p>Before printing a method using a <code>printmethod</code> object, two things
+must be set up:  the object must be given a method to print, and the
+parameters for printing described in the previous section must be
+initialised.
+
+   <p>The class has two constructors:
+
+<div class="defun">
+&mdash; Constructor:  <b>printmethod::printmethod</b> (<var>void</var>)<var>;<a name="index-printmethod_003a_003aprintmethod-344"></a></var><br>
+&mdash; Constructor:  <b>printmethod::printmethod</b> (<var>const method&amp; m</var>)<var>;<a name="index-printmethod_003a_003aprintmethod-345"></a></var><br>
+<blockquote><p>These two constructors create a <code>printmethod</code> object.  In the first
+case, no method is specified; a method will have to be given later,
+before anything can be printed.  In the second case, a reference to the
+method <var>m</var> is stored for printing after the parameters have been set
+up. 
+</p></blockquote></div>
+
+   <p>After the object has been created, the method can be queried and changed
+with these functions:
+
+<div class="defun">
+&mdash; Function: const method&amp; <b>printmethod::get_method</b> (<var>void</var>)<var>;<a name="index-printmethod_003a_003aget_005fmethod-346"></a></var><br>
+<blockquote><p>This returns the method referred to by this <code>printmethod</code> object. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>printmethod::set_method</b> (<var>const method&amp; m</var>)<var>;<a name="index-printmethod_003a_003aset_005fmethod-347"></a></var><br>
+<blockquote><p>This function stored a reference to the method <var>m</var> in the
+<code>printmethod</code> object, for subsequence printing. 
+</p></blockquote></div>
+
+   <p>The parameters for printing, described in the previous section, may be
+manipulated with several member functions.
+
+<div class="defun">
+&mdash; Function: void <b>printmethod::defaults</b> (<var>void</var>)<var>;<a name="index-printmethod_003a_003adefaults-348"></a></var><br>
+<blockquote><p>This function sets the parameters to default values, which relate to the
+method to be printed; so it should not be called before a method has
+been given to the <code>printmethod</code> object.  Specifically, the
+parameters are set as follows:
+
+          <ul>
+<li>Numbers are to be printed in 10-point Helvetica, and the spacing
+between bells is 12 points both horizontally and vertically;
+<li>Each column contains a single lead; an entire plain course of the
+method will be printed, with leads side by side;
+<li>The output is positioned at the bottom left of the page;
+<li>Numbers will be missed underneath lines, except for lead heads;
+<li>Place notation will be printed to the left of the first lead only;
+<li>Each hunt bell is shown with a red line, a quarter of a point
+thick;
+<li>The smallest working bell which makes a place over the lead end is
+shown with a blue line, half a point thick, and place bells are shown
+for this bell.  If no working bell makes a place over the lead end, the
+smallest working bell is chosen instead. 
+</ul>
+        </p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: void <b>printmethod::fit_to_space</b> (<var>const dimension&amp; width, const dimension&amp; height, bool vgap_mode, float aspect</var>)<var>;<a name="index-printmethod_003a_003afit_005fto_005fspace-349"></a></var><br>
+<blockquote><p>This function scales and arranges the method to fit in the given space,
+as specified by <var>width</var> and <var>height</var>.  The parameters which are
+calculated by this function are <code>rows_per_column</code>,
+<code>columns_per_set</code>, <code>hgap</code>, <code>vgap</code>, <code>opt.style.size</code>,
+<code>opt.xspace</code> and <code>opt.yspace</code>.  Two possible layouts are
+possible: if <var>vgap_mode</var> is <code>false</code>, then only one column set
+is used, with each column containing a whole number of leads; if
+<var>vgap_mode</var> is <code>true</code>, then each column contains precisely one
+lead, and as many column sets as necessary are used.  The effect of this
+is that, in the first case, the second lead appears below the first one;
+in the second case, the second lead appears to the right of the first
+one.  The last argument <var>aspect</var> sets the ratio of <code>opt.xspace</code>
+to <code>opt.yspace</code>.
+
+        <p>The chosen layout is that which, given the constraints specified, allows
+the largest of output. 
+</p></blockquote></div>
+
+<div class="defun">
+&mdash; Function: float <b>printmethod::total_width</b> (<var>void</var>)<var>;<a name="index-printmethod_003a_003atotal_005fwidth-350"></a></var><br>
+&mdash; Function: float <b>printmethod::total_height</b> (<var>void</var>)<var>;<a name="index-printmethod_003a_003atotal_005fheight-351"></a></var><br>
+<blockquote><p>These functions give the total width and height, respectively, in points
+of the printed output using the current parameters. 
+</p></blockquote></div>
+
+   </body></html>
+
